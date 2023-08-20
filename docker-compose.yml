@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  travellermap:
+    build: 
+      context: .
+    container_name: travellermap
+    volumes:
+      - ./:/app
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      VIRTUAL_HOST: travellermap.localhost
+    networks:
+      - docker_default
+
+networks:
+  docker_default:
+    external: true

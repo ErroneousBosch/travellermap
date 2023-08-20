@@ -1,0 +1,20 @@
+{
+    "0": "No atmosphere",
+    "1": "Trace",
+    "2": "Very thin; Tainted",
+    "3": "Very thin",
+    "4": "Thin; Tainted",
+    "5": "Thin",
+    "6": "Standard",
+    "7": "Standard; Tainted",
+    "8": "Dense",
+    "9": "Dense; Tainted",
+    "A": "Exotic",
+    "B": "Corrosive",
+    "C": "Insidious",
+    "D": "Dense, high",
+    "E": "Thin, low",
+    "F": "Unusual",
+    "X": "Unknown",
+    "?": "Unknown"
+}

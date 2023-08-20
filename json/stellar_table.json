@@ -1,0 +1,13 @@
+{
+    "Ia": "Supergiant",
+    "Ib": "Supergiant",
+    "II": "Giant",
+    "III": "Giant",
+    "IV": "Subgiant",
+    "V": "Dwarf",
+    "D": "White Dwarf",
+    "BD": "Brown Dwarf",
+    "BH": "Black Hole",
+    "PSR": "Pulsar",
+    "NS": "Neutron Star"
+}

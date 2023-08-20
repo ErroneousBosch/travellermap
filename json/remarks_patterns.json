@@ -1,0 +1,54 @@
+[
+    {
+        "pattern": "\/^Rs\\w$\/",
+        "comment": "Research Station"
+    },
+    {
+        "pattern": "\/^Rw:?\\w$\/",
+        "comment": "Refugee World"
+    },
+    {
+        "pattern": "\/^O:\\d\\d\\d\\d$\/",
+        "comment": "Controlled"
+    },
+    {
+        "pattern": "\/^O:\\d\\d\\d\\d-\\w+$\/",
+        "comment": "Controlled"
+    },
+    {
+        "pattern": "\/^O:\\w\\w$\/",
+        "comment": "Controlled"
+    },
+    {
+        "pattern": "\/^Mr:\\d\\d\\d\\d$\/",
+        "comment": "Military rule"
+    },
+    {
+        "pattern": "\/^\\[.*\\]\\??$\/",
+        "comment": "Homeworld"
+    },
+    {
+        "pattern": "\/^\\(.*\\)\\??$\/",
+        "comment": "Homeworld"
+    },
+    {
+        "pattern": "\/^\\(.*\\)(\\d)$\/",
+        "comment": "Homeworld, Population $1$`0%"
+    },
+    {
+        "pattern": "\/^Di\\(.*\\)$\/",
+        "comment": "Homeworld, Extinct"
+    },
+    {
+        "pattern": "\/^([A-Z][A-Za-z']{3})([0-9W?])$\/",
+        "comment": "decode sophon population"
+    },
+    {
+        "pattern": "\/^([ACDFHIMVXZ])([0-9w])$\/",
+        "comment": "decode sophon population"
+    },
+    {
+        "pattern": "\/^\\{.*\\}$\/",
+        "comment": ""
+    }
+]

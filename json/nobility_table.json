@@ -1,0 +1,13 @@
+{
+    "B": "Knight",
+    "c": "Baronet",
+    "C": "Baron",
+    "D": "Marquis",
+    "e": "Viscount",
+    "E": "Count",
+    "f": "Duke",
+    "F": "Subsector Duke",
+    "G": "Archduke",
+    "H": "Emperor",
+    "?": "Unknown"
+}
