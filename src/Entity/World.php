@@ -517,12 +517,12 @@ class World
         return $this;
     }
 
-    public function getRu(): ?int
+    public function getRU(): ?int
     {
         return $this->ru;
     }
 
-    public function setRu(?int $ru): static
+    public function setRU(?int $ru): static
     {
         $this->ru = $ru;
 
