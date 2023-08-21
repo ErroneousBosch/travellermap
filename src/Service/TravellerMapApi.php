@@ -10,22 +10,25 @@ use Symfony\Component\Serializer\Serializer;
 
 class TravellerMapApi
 {
+    private Serializer $serializer;
  
     public function __construct(
-        private HttpClientInterface $client, 
-        private Serializer $serializer)
+        private HttpClientInterface $client)
     {
-
+        $this->serializer = new Serializer(
+            [new ObjectNormalizer()],
+            [new XmlEncoder(), new JsonEncoder()]
+        );
     }
 
     public function getAllegiances() {
         $data = $this->client->request(
             'GET',
-            'https://travellermap.com/api/allegiances'
+            'https://travellermap.com/t5ss/allegiances'
         );
-        return $this->serializer->deserialize(
+
+        return $this->serializer->decode(
             $data->getContent(),
-            'App\Entity\Metadata[]',
             'json'
         );
     }

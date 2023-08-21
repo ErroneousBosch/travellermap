@@ -1,17 +1,19 @@
 <?php
 
 use App\Kernel;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
-use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
-require_once __DIR__.'/vendor/autoload.php';
-)
+require_once __DIR__.'/vendor/autoload_runtime.php';
 
-$api = service('App\Service\TravellerMapApi');
+
+$kernel = new Kernel('dev', true);
+$kernel->boot();
+$container = $kernel->getContainer();
+$api = $container->get('App\Service\TravellerMapApi');
+ 
 $adat = $api->getAllegiances();
 var_dump($adat);
-exit();
+/*
 
 
 
@@ -647,3 +649,4 @@ foreach(array_keys($data) as $sectionname){
 // file_put_contents('json/sophonts_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/t5ss/sophonts')), JSON_PRETTY_PRINT));
 // file_put_contents('json/milieux_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/api/milieux')), JSON_PRETTY_PRINT));
 
+*/
