@@ -1,0 +1,1345 @@
+{
+    "uwp": [
+        {
+            "Code": "Starport",
+            "Description": "Type of starport facility on world."
+        },
+        {
+            "Code": "Size",
+            "Description": "World diameter (in units of 1,600 kilometers)."
+        },
+        {
+            "Code": "Atmosphere",
+            "Description": "World atmosphere type."
+        },
+        {
+            "Code": "Hydrographics",
+            "Description": "World surface covered with water (in tenths)."
+        },
+        {
+            "Code": "Population",
+            "Description": "Exponent of intelligent population."
+        },
+        {
+            "Code": "Government",
+            "Description": "World government type."
+        },
+        {
+            "Code": "Law Level",
+            "Description": "Degree of oppression by law."
+        },
+        {
+            "Code": "Technological Level",
+            "Description": "Level of technological achievement."
+        }
+    ],
+    "starport": [
+        {
+            "Code": "A",
+            "Starport Description": "Excellent Quality. Refined fuel available. Annual maintenance overhaul available. Shipyard capable of constructing starships and non-starships present. Naval base and\/or scout base may be present."
+        },
+        {
+            "Code": "B",
+            "Starport Description": "Good Quality. Refined fuel available. Annual maintenance overhaul available. Shipyard capable of constructing non-starships present. Naval base and\/or scout base may be present."
+        },
+        {
+            "Code": "C",
+            "Starport Description": "Routine Quality. Only unrefined fuel available. Reasonable repair facilities present. Scout base may be present."
+        },
+        {
+            "Code": "D",
+            "Starport Description": "Poor Quality. Only unrefined fuel available. No repair facilities present. Scout base may be present."
+        },
+        {
+            "Code": "E",
+            "Starport Description": "Frontier Installation. Essentially a marked spot of bedrock with no fuel, facilities, or bases present."
+        },
+        {
+            "Code": "X",
+            "Starport Description": "No Starport. No provision is made for any ship landings."
+        },
+        {
+            "Code": "?",
+            "Starport Description": "Unknown."
+        }
+    ],
+    "size": [
+        {
+            "Size": "1",
+            "Diameter (km)": "1,600",
+            "Mass (Earth = 1)": "0.0019",
+            "Area (Earth = 1)": "0.015",
+            "Gravity (G)": "0.122",
+            "Esc. Vel (km\/s)": "1.35"
+        },
+        {
+            "Size": "2",
+            "Diameter (km)": "3,200",
+            "Mass (Earth = 1)": "0.015",
+            "Area (Earth = 1)": "0.063",
+            "Gravity (G)": "0.240",
+            "Esc. Vel (km\/s)": "2.69"
+        },
+        {
+            "Size": "3",
+            "Diameter (km)": "4,800",
+            "Mass (Earth = 1)": "0.053",
+            "Area (Earth = 1)": "0.141",
+            "Gravity (G)": "0.377",
+            "Esc. Vel (km\/s)": "4.13"
+        },
+        {
+            "Size": "4",
+            "Diameter (km)": "6,400",
+            "Mass (Earth = 1)": "0.125",
+            "Area (Earth = 1)": "0.250",
+            "Gravity (G)": "0.500",
+            "Esc. Vel (km\/s)": "5.49"
+        },
+        {
+            "Size": "5",
+            "Diameter (km)": "8,000",
+            "Mass (Earth = 1)": "0.244",
+            "Area (Earth = 1)": "0.391",
+            "Gravity (G)": "0.625",
+            "Esc. Vel (km\/s)": "6.87"
+        },
+        {
+            "Size": "6",
+            "Diameter (km)": "9,600",
+            "Mass (Earth = 1)": "0.422",
+            "Area (Earth = 1)": "0.563",
+            "Gravity (G)": "0.840",
+            "Esc. Vel (km\/s)": "8.72"
+        },
+        {
+            "Size": "7",
+            "Diameter (km)": "11,200",
+            "Mass (Earth = 1)": "0.670",
+            "Area (Earth = 1)": "0.766",
+            "Gravity (G)": "0.875",
+            "Esc. Vel (km\/s)": "9.62"
+        },
+        {
+            "Size": "8",
+            "Diameter (km)": "12,800",
+            "Mass (Earth = 1)": "1.000",
+            "Area (Earth = 1)": "1.000",
+            "Gravity (G)": "1.000",
+            "Esc. Vel (km\/s)": "11.00"
+        },
+        {
+            "Size": "9",
+            "Diameter (km)": "14,400",
+            "Mass (Earth = 1)": "1.424",
+            "Area (Earth = 1)": "1.266",
+            "Gravity (G)": "1.120",
+            "Esc. Vel (km\/s)": "12.35"
+        },
+        {
+            "Size": "A",
+            "Diameter (km)": "16,000",
+            "Mass (Earth = 1)": "1.953",
+            "Area (Earth = 1)": "1.563",
+            "Gravity (G)": "1.250",
+            "Esc. Vel (km\/s)": "13.73"
+        },
+        {
+            "Size": "B",
+            "Diameter (km)": "18,800",
+            "Mass (Earth = 1)": "2.600",
+            "Area (Earth = 1)": "1.891",
+            "Gravity (G)": "1.375",
+            "Esc. Vel (km\/s)": "15.34"
+        },
+        {
+            "Size": "C",
+            "Diameter (km)": "19,200",
+            "Mass (Earth = 1)": "3.375",
+            "Area (Earth = 1)": "2.250",
+            "Gravity (G)": "1.500",
+            "Esc. Vel (km\/s)": "16.74"
+        },
+        {
+            "Size": "D",
+            "Diameter (km)": "20,800",
+            "Mass (Earth = 1)": "4.291",
+            "Area (Earth = 1)": "2.641",
+            "Gravity (G)": "1.625",
+            "Esc. Vel (km\/s)": "18.13"
+        },
+        {
+            "Size": "E",
+            "Diameter (km)": "22,400",
+            "Mass (Earth = 1)": "5.359",
+            "Area (Earth = 1)": "3.063",
+            "Gravity (G)": "1.750",
+            "Esc. Vel (km\/s)": "19.52"
+        },
+        {
+            "Size": "F",
+            "Diameter (km)": "24,000",
+            "Mass (Earth = 1)": "6.592",
+            "Area (Earth = 1)": "3.516",
+            "Gravity (G)": "1.875",
+            "Esc. Vel (km\/s)": "20.92"
+        },
+        {
+            "Size": "?",
+            "Diameter (km)": "Unknown.",
+            "Mass (Earth = 1)": "Unknown.",
+            "Area (Earth = 1)": "Unknown.",
+            "Gravity (G)": "Unknown.",
+            "Esc. Vel (km\/s)": "Unknown."
+        }
+    ],
+    "atmosphere": [
+        {
+            "Code": "0",
+            "Description": "No atmosphere. Requires vacc suit."
+        },
+        {
+            "Code": "1",
+            "Description": "Trace. Requires vacc suit."
+        },
+        {
+            "Code": "2",
+            "Description": "Very thin. Tainted. Requires combination respirator\/filter."
+        },
+        {
+            "Code": "3",
+            "Description": "Very thin. Requires respirator."
+        },
+        {
+            "Code": "4",
+            "Description": "Thin. Tainted. Requires filter mask."
+        },
+        {
+            "Code": "5",
+            "Description": "Thin. Breathable."
+        },
+        {
+            "Code": "6",
+            "Description": "Standard. Breathable."
+        },
+        {
+            "Code": "7",
+            "Description": "Standard. Tainted. Requires filter mask."
+        },
+        {
+            "Code": "8",
+            "Description": "Dense. Breathable."
+        },
+        {
+            "Code": "9",
+            "Description": "Dense. Tainted. Requires filter mask."
+        },
+        {
+            "Code": "A",
+            "Description": "Exotic. Requires special protective equipment."
+        },
+        {
+            "Code": "B",
+            "Description": "Corrosive. Requires protective suit."
+        },
+        {
+            "Code": "C",
+            "Description": "Insidious. Requires protective suit."
+        },
+        {
+            "Code": "D",
+            "Description": "Dense, high. Breathable above a minimum altitude."
+        },
+        {
+            "Code": "E",
+            "Description": "Thin, low. Breathable below certain altitudes."
+        },
+        {
+            "Code": "F",
+            "Description": "Unusual."
+        },
+        {
+            "Code": "?",
+            "Description": "Unknown."
+        }
+    ],
+    "hydrographics": [
+        {
+            "Code": "0",
+            "Description": "No water. Desert World."
+        },
+        {
+            "Code": "1",
+            "Description": "10% water."
+        },
+        {
+            "Code": "2",
+            "Description": "20% water."
+        },
+        {
+            "Code": "3",
+            "Description": "30% water."
+        },
+        {
+            "Code": "4",
+            "Description": "40% water."
+        },
+        {
+            "Code": "5",
+            "Description": "50% water."
+        },
+        {
+            "Code": "6",
+            "Description": "60% water."
+        },
+        {
+            "Code": "7",
+            "Description": "70% water. Equivalent to Terra or Vland."
+        },
+        {
+            "Code": "8",
+            "Description": "80% water."
+        },
+        {
+            "Code": "9",
+            "Description": "90% water."
+        },
+        {
+            "Code": "A",
+            "Description": "100% water. Water World."
+        },
+        {
+            "Code": "?",
+            "Description": "Unknown."
+        }
+    ],
+    "population_exponent": [
+        {
+            "Code": "0",
+            "Description": "Few or no inhabitants."
+        },
+        {
+            "Code": "1",
+            "Description": "Tens of inhabitants."
+        },
+        {
+            "Code": "2",
+            "Description": "Hundreds of inhabitants."
+        },
+        {
+            "Code": "3",
+            "Description": "Thousands of inhabitants."
+        },
+        {
+            "Code": "4",
+            "Description": "Tens of thousands of inhabitants."
+        },
+        {
+            "Code": "5",
+            "Description": "Hundreds of thousands of inhabitants."
+        },
+        {
+            "Code": "6",
+            "Description": "Millions of inhabitants."
+        },
+        {
+            "Code": "7",
+            "Description": "Tens of millions of inhabitants."
+        },
+        {
+            "Code": "8",
+            "Description": "Hundreds of millions of inhabitants."
+        },
+        {
+            "Code": "9",
+            "Description": "Billions of inhabitants."
+        },
+        {
+            "Code": "A",
+            "Description": "Tens of billions of inhabitants."
+        },
+        {
+            "Code": "B",
+            "Description": "Hundreds of billions of inhabitants."
+        },
+        {
+            "Code": "C",
+            "Description": "Trillions of inhabitants."
+        },
+        {
+            "Code": "D",
+            "Description": "Tens of trillions of inhabitants."
+        },
+        {
+            "Code": "E",
+            "Description": "Hundreds of trillions of inhabitants."
+        },
+        {
+            "Code": "F",
+            "Description": "Quadrillions of inhabitants."
+        },
+        {
+            "Code": "?",
+            "Description": "Unknown."
+        }
+    ],
+    "government": [
+        {
+            "Code": "0",
+            "Description": "No Government Structure.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "1",
+            "Description": "Company\/Corporation.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "2",
+            "Description": "Participating Democracy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "3",
+            "Description": "Self-Perpetuating Oligarchy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "4",
+            "Description": "Representative Democracy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "5",
+            "Description": "Feudal Technocracy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "6",
+            "Description": "Captive Government \/ Colony.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "7",
+            "Description": "Balkanization.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "8",
+            "Description": "Civil Service Bureaucracy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "9",
+            "Description": "Impersonal Bureaucracy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "A",
+            "Description": "Charismatic Dictator.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "B",
+            "Description": "Non-Charismatic Dictator.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "C",
+            "Description": "Charismatic Oligarchy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "D",
+            "Description": "Religious Dictatorship.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "E",
+            "Description": "Religious Autocracy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "F",
+            "Description": "Totalitarian Oligarchy.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "G",
+            "Description": "Small Station or Facility.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "H",
+            "Description": "Split Clan Control.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "J",
+            "Description": "Single On-world Clan Control.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "K",
+            "Description": "Single Multi-world Clan Control.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "L",
+            "Description": "Major Clan Control.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "M",
+            "Description": "Vassal Clan Control.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "N",
+            "Description": "Major Vassal Clan Control.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "P",
+            "Description": "Small Station or Facility.",
+            "Allegiance": "K'kree."
+        },
+        {
+            "Code": "Q",
+            "Description": "Krurruna or Krumanak Rule for Off-world Steppelord.",
+            "Allegiance": "K'kree."
+        },
+        {
+            "Code": "R",
+            "Description": "Steppelord On-world Rule",
+            "Allegiance": "K'kree."
+        },
+        {
+            "Code": "S",
+            "Description": "Sept.",
+            "Allegiance": "Hiver."
+        },
+        {
+            "Code": "T",
+            "Description": "Unsupervised Anarchy.",
+            "Allegiance": "Hiver."
+        },
+        {
+            "Code": "U",
+            "Description": "Supervised Anarchy.",
+            "Allegiance": "Hiver."
+        },
+        {
+            "Code": "V",
+            "Description": "",
+            "Allegiance": ""
+        },
+        {
+            "Code": "W",
+            "Description": "Committee.",
+            "Allegiance": "Hiver."
+        },
+        {
+            "Code": "X",
+            "Description": "Droyne Hierarchy.",
+            "Allegiance": "Droyne."
+        },
+        {
+            "Code": "Y",
+            "Description": "",
+            "Allegiance": ""
+        },
+        {
+            "Code": "Z",
+            "Description": "",
+            "Allegiance": ""
+        },
+        {
+            "Code": "?",
+            "Description": "Unknown.",
+            "Allegiance": "Unknown."
+        }
+    ],
+    "law_level": [
+        {
+            "Code": "0",
+            "Description": "No prohibitions."
+        },
+        {
+            "Code": "1",
+            "Description": "Body pistols, explosives, and poison gas prohibited."
+        },
+        {
+            "Code": "2",
+            "Description": "Portable energy weapons prohibited."
+        },
+        {
+            "Code": "3",
+            "Description": "Machine guns, automatic rifles prohibited."
+        },
+        {
+            "Code": "4",
+            "Description": "Light assault weapons prohibited."
+        },
+        {
+            "Code": "5",
+            "Description": "Personal concealable weapons prohibited."
+        },
+        {
+            "Code": "6",
+            "Description": "All firearms except shotguns prohibited."
+        },
+        {
+            "Code": "7",
+            "Description": "Shotguns prohibited."
+        },
+        {
+            "Code": "8",
+            "Description": "Long bladed weapons controlled; open possession prohibited."
+        },
+        {
+            "Code": "9",
+            "Description": "Possession of weapons outside the home prohibited."
+        },
+        {
+            "Code": "A",
+            "Description": "Weapon possession prohibited."
+        },
+        {
+            "Code": "B",
+            "Description": "Rigid control of civilian movement."
+        },
+        {
+            "Code": "C",
+            "Description": "Unrestricted invasion of privacy."
+        },
+        {
+            "Code": "D",
+            "Description": "Paramilitary law enforcement."
+        },
+        {
+            "Code": "E",
+            "Description": "Full-fledged police state."
+        },
+        {
+            "Code": "F",
+            "Description": "All facets of daily life regularly legislated and controlled."
+        },
+        {
+            "Code": "G",
+            "Description": "Severe punishment for petty infractions."
+        },
+        {
+            "Code": "H",
+            "Description": "Legalized oppressive practices."
+        },
+        {
+            "Code": "J",
+            "Description": "Routinely oppressive and restrictive."
+        },
+        {
+            "Code": "K",
+            "Description": "Excessively oppressive and restrictive."
+        },
+        {
+            "Code": "L",
+            "Description": "Totally oppressive and restrictive."
+        },
+        {
+            "Code": "S",
+            "Description": "Special\/Variable situation."
+        },
+        {
+            "Code": "?",
+            "Description": "Unknown."
+        }
+    ],
+    "tech_level": [
+        {
+            "Code": "0",
+            "Description": "Stone Age. Primitive."
+        },
+        {
+            "Code": "1",
+            "Description": "Bronze, Iron. Bronze Age to Middle Ages"
+        },
+        {
+            "Code": "2",
+            "Description": "Printing Press. circa 1400 to 1700."
+        },
+        {
+            "Code": "3",
+            "Description": "Basic Science. circa 1700 to 1860."
+        },
+        {
+            "Code": "4",
+            "Description": "External Combustion. circa 1860 to 1900."
+        },
+        {
+            "Code": "5",
+            "Description": "Mass Production. circa 1900 to 1939."
+        },
+        {
+            "Code": "6",
+            "Description": "Nuclear Power. circa 1940 to 1969."
+        },
+        {
+            "Code": "7",
+            "Description": "Miniaturized Electronics. circa 1970 to 1979."
+        },
+        {
+            "Code": "8",
+            "Description": "Quality Computers. circa 1980 to 1989."
+        },
+        {
+            "Code": "9",
+            "Description": "Anti-Gravity. circa 1990 to 2000."
+        },
+        {
+            "Code": "A",
+            "Description": "Interstellar community."
+        },
+        {
+            "Code": "B",
+            "Description": "Lower Average Imperial."
+        },
+        {
+            "Code": "C",
+            "Description": "Average Imperial."
+        },
+        {
+            "Code": "D",
+            "Description": "Above Average Imperial."
+        },
+        {
+            "Code": "E",
+            "Description": "Above Average Imperial."
+        },
+        {
+            "Code": "F",
+            "Description": "Technical Imperial Maximum."
+        },
+        {
+            "Code": "G",
+            "Description": "Robots."
+        },
+        {
+            "Code": "H",
+            "Description": "Artificial Intelligence."
+        },
+        {
+            "Code": "J",
+            "Description": "Personal Disintegrators."
+        },
+        {
+            "Code": "K",
+            "Description": "Plastic Metals."
+        },
+        {
+            "Code": "L",
+            "Description": "Comprehensible only as technological magic."
+        },
+        {
+            "Code": "?",
+            "Description": "Unknown."
+        }
+    ],
+    "remarks": [
+        {
+            "Planetary": "As",
+            "Description": "Asteroid Belt.Siz 0"
+        },
+        {
+            "Planetary": "De",
+            "Description": "Desert.Atm 2-9, Hyd 0"
+        },
+        {
+            "Planetary": "Fl",
+            "Description": "Fluid Hydrographics (in place of water).Atm A-C, Hyd 1+"
+        },
+        {
+            "Planetary": "Ga",
+            "Description": "Garden World.Siz 6-8, Atm 5,6,8, Hyd 5-7"
+        },
+        {
+            "Planetary": "He",
+            "Description": "Hellworld.Siz 3+, Atm 2,4,7,9-C, Hyd 0-2"
+        },
+        {
+            "Planetary": "Ic",
+            "Description": "Ice Capped.Atm 0-1, Hyd 1+"
+        },
+        {
+            "Planetary": "Oc",
+            "Description": "Ocean World.Siz A+, Hyd A"
+        },
+        {
+            "Planetary": "Va",
+            "Description": "Vacuum World.Atm 0"
+        },
+        {
+            "Planetary": "Wa",
+            "Description": "Water World.Siz 3-9, Atm 3-9, Hyd A"
+        },
+        {
+            "Population": "Di",
+            "Description": "Dieback.PGL 0, TL 1+"
+        },
+        {
+            "Population": "Ba",
+            "Description": "Barren.PGL 0, TL 0"
+        },
+        {
+            "Population": "Lo",
+            "Description": "Low Population.Pop 1-3"
+        },
+        {
+            "Population": "Ni",
+            "Description": "Non-Industrial.Pop 4-6"
+        },
+        {
+            "Population": "Ph",
+            "Description": "Pre-High Population.Pop 8"
+        },
+        {
+            "Population": "Hi",
+            "Description": "High Population.Pop 9+"
+        },
+        {
+            "Economic": "Pa",
+            "Description": "Pre-Agricultural.Atm 4-9, Hyd 4-8, Pop 4,8"
+        },
+        {
+            "Economic": "Ag",
+            "Description": "Agricultural.Atm 4-9, Hyg 4-8, Pop 5-7"
+        },
+        {
+            "Economic": "Na",
+            "Description": "Non-Agricultural.Atm 3-, Hyd 3-, Pop 6+"
+        },
+        {
+            "Economic": "Pi",
+            "Description": "Pre-Industrial.Atm 0,1,2,4,7,9, Pop 7-8"
+        },
+        {
+            "Economic": "In",
+            "Description": "Industrialized.Atm 0,1,2,4,7,9-C, Pop 9+"
+        },
+        {
+            "Economic": "Po",
+            "Description": "Poor.Atm 2-5, Hyd 3-"
+        },
+        {
+            "Economic": "Pr",
+            "Description": "Pre-Rich.Atm 6,8, Pop 5,9"
+        },
+        {
+            "Economic": "Ri",
+            "Description": "Rich.Atm 6,8, Pop 6-8"
+        },
+        {
+            "Climate": "Fr",
+            "Description": "Frozen.Siz 2-9, Hyd 1+, HZ +2 or Outer"
+        },
+        {
+            "Climate": "Ho",
+            "Description": "Hot.HZ -1"
+        },
+        {
+            "Climate": "Co",
+            "Description": "Cold.HZ +1"
+        },
+        {
+            "Climate": "Lk",
+            "Description": "Locked.Close Satellite"
+        },
+        {
+            "Climate": "Tr",
+            "Description": "Tropic.Siz 6-9, Atm 4-9, Hyd 3-7, HZ -1"
+        },
+        {
+            "Climate": "Tu",
+            "Description": "Tundra.Siz 6-9, Atm 4-9, Hyd 3-7, HZ +1"
+        },
+        {
+            "Climate": "Tz",
+            "Description": "Twilight Zone.Orbit 0-1"
+        },
+        {
+            "Secondary": "Fa",
+            "Description": "Farming.Atm 4-9, Hyd 4-8, Pop 2-6, Not MW, HZ"
+        },
+        {
+            "Secondary": "Mi",
+            "Description": "Mining.Pop 2-6, Not MW, MW=In"
+        },
+        {
+            "Secondary": "Mr",
+            "Description": "Military Rule.By regional Allegiance power."
+        },
+        {
+            "Secondary": "Mr(AAAA)",
+            "Description": "Military Rule (by allegiance AAAA)."
+        },
+        {
+            "Secondary": "Px",
+            "Description": "Prison, Exile Camp.MW"
+        },
+        {
+            "Secondary": "Pe",
+            "Description": "Penal Colony.Not MW"
+        },
+        {
+            "Secondary": "Re",
+            "Description": "Reserve."
+        },
+        {
+            "Political": "Cp",
+            "Description": "Subsector Capital."
+        },
+        {
+            "Political": "Cs",
+            "Description": "Sector Capital."
+        },
+        {
+            "Political": "Cx",
+            "Description": "Capital."
+        },
+        {
+            "Political": "Cy",
+            "Description": "Colony (see O:XXYY)."
+        },
+        {
+            "Special": "Sa",
+            "Description": "Satellite (Main World is a moon of a Gas Giant)."
+        },
+        {
+            "Special": "Fo",
+            "Description": "Forbidden (Red Zone)."
+        },
+        {
+            "Special": "Pz",
+            "Description": "Puzzle (Amber Zone).Pop 7+"
+        },
+        {
+            "Special": "Da",
+            "Description": "Danger (Amber Zone).Pop 6-"
+        },
+        {
+            "Special": "Ab",
+            "Description": "Data Repository."
+        },
+        {
+            "Special": "An",
+            "Description": "Ancient Site."
+        },
+        {
+            "Special": "Rs",
+            "Description": "Research Station.Imperial."
+        },
+        {
+            "Special": "RsA",
+            "Description": "Research Station A = Alpha, B = Beta, G = Gamma, etc.Imperial."
+        },
+        {
+            "Ownership": "O:XXYY",
+            "Description": "Controlled by world in hex XXYY."
+        },
+        {
+            "Ownership": "O:SSSS-XXYY",
+            "Description": "Controlled by world in hex XXYY in sector SSSS."
+        },
+        {
+            "Sophonts": "[Sophont]",
+            "Description": "Homeworld of major race."
+        },
+        {
+            "Sophonts": "(Sophont)",
+            "Description": "Homeworld of minor race. 0-9 indicates tenths of population if < 100%."
+        },
+        {
+            "Sophonts": "(Sophont)#",
+            "Description": "(Sophont)#"
+        },
+        {
+            "Sophonts": "Di(Sophont)",
+            "Description": "Homeworld of extinct minor race (Dieback)."
+        },
+        {
+            "Sophonts": "Soph0",
+            "Description": "Sophont Population. Soph is an abbreviation for the sophont name. 0-9 indicates tenths of population; W is 100%, e.g. DroyW."
+        },
+        {
+            "Sophonts": "SophW",
+            "Description": "SophW"
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "S0",
+            "Description": "Sophont Population. S is an abbreviation for the sophont name. 0-9 indicates tenths of population; w is 100%, e.g. Dw"
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "S:0",
+            "Description": "S:0"
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Sw",
+            "Description": "Sw"
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Nh",
+            "Description": "Non-Hiver Population.Hiver."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Nk",
+            "Description": "Non-K'kree Population.K'kree."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Tp",
+            "Description": "Terra-prime. Adventure 5: Leviathan."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Tn",
+            "Description": "Terra-norm. Adventure 5: Leviathan."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Lt",
+            "Description": "Low Technology. Mongoose Publishing."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Ht",
+            "Description": "High Technology. Mongoose Publishing."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Fa",
+            "Description": "Fascinating.Hiver."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "St",
+            "Description": "Steppeworld.K'kree"
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Ex",
+            "Description": "Exile Camp.Imperial."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Pr",
+            "Description": "Prison World.Imperial."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Xb",
+            "Description": "Xboat Station.Imperial."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "Cr",
+            "Description": "Reserve Capital.Zhodani."
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "S#",
+            "Description": "Stellar companion orbits (F = far), e.g. S19 indicates companion stars are in orbits 1 and 9; SF1 indicates far companion is binary (companion in orbit 1)"
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "S##",
+            "Description": "S##"
+        },
+        {
+            "Non-Standard \/ Legacy Codes": "{...}",
+            "Description": "Other comments or annotations."
+        }
+    ],
+    "sophont": [],
+    "nobility": [
+        {
+            "Code": "B",
+            "Ranking Noble": "Knight."
+        },
+        {
+            "Code": "c",
+            "Ranking Noble": "Baronet."
+        },
+        {
+            "Code": "C",
+            "Ranking Noble": "Baron."
+        },
+        {
+            "Code": "D",
+            "Ranking Noble": "Marquis."
+        },
+        {
+            "Code": "e",
+            "Ranking Noble": "Viscount."
+        },
+        {
+            "Code": "E",
+            "Ranking Noble": "Count."
+        },
+        {
+            "Code": "f",
+            "Ranking Noble": "Duke."
+        },
+        {
+            "Code": "F",
+            "Ranking Noble": "Subsector Duke."
+        },
+        {
+            "Code": "G",
+            "Ranking Noble": "Archduke."
+        },
+        {
+            "Code": "H",
+            "Ranking Noble": "Emperor."
+        }
+    ],
+    "bases": [
+        {
+            "Code": "C",
+            "Description": "Corsair Base.",
+            "Allegiance": "Vargr."
+        },
+        {
+            "Code": "D",
+            "Description": "Naval Depot.",
+            "Allegiance": "Any."
+        },
+        {
+            "Code": "E",
+            "Description": "Embassy.",
+            "Allegiance": "Hiver."
+        },
+        {
+            "Code": "K",
+            "Description": "Naval Base.",
+            "Allegiance": "Any."
+        },
+        {
+            "Code": "M",
+            "Description": "Military Base.",
+            "Allegiance": "Any."
+        },
+        {
+            "Code": "N",
+            "Description": "Naval Base.",
+            "Allegiance": "Imperial."
+        },
+        {
+            "Code": "R",
+            "Description": "Clan Base.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "S",
+            "Description": "Scout Base.",
+            "Allegiance": "Imperial."
+        },
+        {
+            "Code": "T",
+            "Description": "Tlaukhu Base.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "V",
+            "Description": "Exploration Base.",
+            "Allegiance": "Any."
+        },
+        {
+            "Code": "W",
+            "Description": "Way Station.",
+            "Allegiance": "Any."
+        },
+        {
+            "Code": "M",
+            "Description": "Military Base.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "N",
+            "Description": "Naval Base.",
+            "Allegiance": "Imperial."
+        },
+        {
+            "Code": "O",
+            "Description": "Naval Outpost.",
+            "Allegiance": "K'kree"
+        },
+        {
+            "Code": "P",
+            "Description": "Naval Base.",
+            "Allegiance": "Droyne."
+        },
+        {
+            "Code": "Q",
+            "Description": "Military Garrison.",
+            "Allegiance": "Droyne."
+        },
+        {
+            "Code": "R",
+            "Description": "Clan Base.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "S",
+            "Description": "Scout Base.",
+            "Allegiance": "Imperial."
+        },
+        {
+            "Code": "T",
+            "Description": "Tlauku Base.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "U",
+            "Description": "Tlauku and Clan Base.",
+            "Allegiance": "Aslan."
+        },
+        {
+            "Code": "V",
+            "Description": "Scout\/Exploration Base.",
+            "Allegiance": ""
+        },
+        {
+            "Code": "W",
+            "Description": "Way Station.",
+            "Allegiance": "Imperial."
+        },
+        {
+            "Code": "X",
+            "Description": "Relay Station.",
+            "Allegiance": "Zhodani."
+        },
+        {
+            "Code": "Y",
+            "Description": "Depot.",
+            "Allegiance": "Zhodani."
+        },
+        {
+            "Code": "Z",
+            "Description": "Naval\/Military Base.",
+            "Allegiance": "Zhodani."
+        }
+    ],
+    "zone": [
+        {
+            "Code": "R",
+            "Description": "Red. Interdicted. Dangerous. Prohibited. Imperial."
+        },
+        {
+            "Code": "A",
+            "Description": "Amber. Potentially dangerous. Caution advised. Imperial."
+        },
+        {
+            "Code": "G",
+            "Description": "Green. Unrestricted. Imperial."
+        },
+        {
+            "Code": "B",
+            "Description": "Blue. Balkanized \u2014 code is dominant government. TNE (circa 1201)."
+        },
+        {
+            "Code": "F",
+            "Description": "Forbidden. Access prohibited. Zhodani."
+        },
+        {
+            "Code": "U",
+            "Description": "Unabsorbed. Access restricted. Zhodani."
+        }
+    ],
+    "allegiance": [
+        {
+            "Code": "Dr",
+            "Description": "Droyne world.",
+            "Edition": ""
+        },
+        {
+            "Code": "Dd",
+            "Description": "Domain of Deneb",
+            "Edition": "MegaTraveller."
+        },
+        {
+            "Code": "Fd",
+            "Description": "Federation of Daibei",
+            "Edition": "MegaTraveller."
+        },
+        {
+            "Code": "Fi",
+            "Description": "Federation of Ilelish",
+            "Edition": "MegaTraveller."
+        },
+        {
+            "Code": "La",
+            "Description": "League of Antares",
+            "Edition": "MegaTraveller."
+        },
+        {
+            "Code": "Li",
+            "Description": "Lucan's Imperium",
+            "Edition": "MegaTraveller."
+        },
+        {
+            "Code": "Ma",
+            "Description": "Margaret's Stronghold",
+            "Edition": "MegaTraveller."
+        },
+        {
+            "Code": "Rv",
+            "Description": "Restored Vilani Empire\/Ziru Sirka",
+            "Edition": "MegaTraveller."
+        },
+        {
+            "Code": "St",
+            "Description": "Strephon's Imperium",
+            "Edition": "MegaTraveller."
+        },
+        {
+            "Code": "Wi",
+            "Description": "Wilds",
+            "Edition": "Traveller: The New Era."
+        },
+        {
+            "Code": "--",
+            "Description": "Empty, unclaimed system.",
+            "Edition": ""
+        }
+    ],
+    "stellar": [
+        {
+            "Code": "O",
+            "Description": "Blue",
+            "Temperature (K)": ">33,000"
+        },
+        {
+            "Code": "B",
+            "Description": "Blue-White",
+            "Temperature (K)": "10,000-33,000"
+        },
+        {
+            "Code": "A",
+            "Description": "Blue-White",
+            "Temperature (K)": "7,500-10,000"
+        },
+        {
+            "Code": "F",
+            "Description": "Yellow-White",
+            "Temperature (K)": "6,000-7,500"
+        },
+        {
+            "Code": "G",
+            "Description": "Yellow",
+            "Temperature (K)": "5,200-6,000"
+        },
+        {
+            "Code": "K",
+            "Description": "Orange",
+            "Temperature (K)": "3,700-5,200"
+        },
+        {
+            "Code": "M",
+            "Description": "Red",
+            "Temperature (K)": "2,000-3,700"
+        },
+        {
+            "Code": "D",
+            "Description": "White Dwarf.",
+            "Diameter (Sol = 1)": "0.006 - 0.018"
+        }
+    ],
+    "ehex": []
+}

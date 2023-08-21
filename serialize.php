@@ -1,8 +1,20 @@
 <?php
 
 use App\Kernel;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 require_once __DIR__.'/vendor/autoload.php';
+)
+
+$api = service('App\Service\TravellerMapApi');
+$adat = $api->getAllegiances();
+var_dump($adat);
+exit();
+
+
+
 
 // use Symfony\Component\Serializer\Encoder\JsonEncoder;
 // use Symfony\Component\Serializer\Encoder\XmlEncoder;
@@ -15,73 +27,78 @@ require_once __DIR__.'/vendor/autoload.php';
 // $normalizers = [new ObjectNormalizer()];
 
 // $serializer = new Serializer($normalizers, $encoders);
-// libxml_use_internal_errors(true);
-// $xml = file_get_contents('https://travellermap.com/doc/secondsurvey');
+libxml_use_internal_errors(true);
+$xml = file_get_contents('https://travellermap.com/doc/secondsurvey');
 
-// $doc = new DOMDocument();
-// $doc->loadHTML($xml);
-// $doc->normalizeDocument();
+$doc = new DOMDocument();
+$doc->loadHTML($xml);
+$doc->normalizeDocument();
+$norm = new Normalizer();
 
-// $xpath = new DOMXpath($doc);
+$xpath = new DOMXpath($doc);
 
-// $data = [];
-// foreach($xpath->query('//section/table') as $sectiontable){
-//   $sectionname = $sectiontable->parentNode->getAttribute('id');
-//   foreach($sectiontable->childNodes as $childNode){
+$data = [];
+foreach($xpath->query('//section/table') as $sectiontable){
+  $sectionname = $sectiontable->parentNode->getAttribute('id');
+  foreach($sectiontable->childNodes as $childNode){
 
-//   }
-//   $data[$sectionname] = $data[$sectionname] ?? [];
-//   $data[$sectionname] += table2rows($sectiontable);
-//   // match ($sectionname){
-//   //   'allegiance' => table2rows($sectiontable),
-//   //   'atmosphere' => table2rows($sectiontable),
-//   //   'bases' => table2rows($sectiontable),
-//   //   'ehex' => table2rows($sectiontable),
-//   //   'government' => table2rows($sectiontable),
-//   //   'hydrographics' => table2rows($sectiontable),
-//   //   'law_level' => table2rows($sectiontable),
-//   //   'nobility' => table2rows($sectiontable),
-//   //   'population_exponent' => table2rows($sectiontable),
-//   //   'remarks' => table2rows($sectiontable),
-//   //   'size' => table2rows($sectiontable),
-//   //   'sophont' => table2rows($sectiontable),
-//   //   'starport' => table2rows($sectiontable),
-//   //   'stellar' => table2rows($sectiontable),
-//   //   'tech_level' => table2rows($sectiontable),
-//   //   'uwp' => table2rows($sectiontable, false),
-//   //   'zone' => table2rows($sectiontable),
-//   //   default => table2rows($sectiontable),
-//   // };
+  }
+  $data[$sectionname] = $data[$sectionname] ?? [];
+  $data[$sectionname] += table2rows($sectiontable);
+  // match ($sectionname){
+  //   'allegiance' => table2rows($sectiontable),
+  //   'atmosphere' => table2rows($sectiontable),
+  //   'bases' => table2rows($sectiontable),
+  //   'ehex' => table2rows($sectiontable),
+  //   'government' => table2rows($sectiontable),
+  //   'hydrographics' => table2rows($sectiontable),
+  //   'law_level' => table2rows($sectiontable),
+  //   'nobility' => table2rows($sectiontable),
+  //   'population_exponent' => table2rows($sectiontable),
+  //   'remarks' => table2rows($sectiontable),
+  //   'size' => table2rows($sectiontable),
+  //   'sophont' => table2rows($sectiontable),
+  //   'starport' => table2rows($sectiontable),
+  //   'stellar' => table2rows($sectiontable),
+  //   'tech_level' => table2rows($sectiontable),
+  //   'uwp' => table2rows($sectiontable, false),
+  //   'zone' => table2rows($sectiontable),
+  //   default => table2rows($sectiontable),
+  // };
 
 
-//   // foreach($sectiontable->childNodes as $childNode){
-//   //   if ($childNode->nodeName == 'tr'){
-//   //     // $childNode->normalize();
-//   //     echo count($childNode->childNodes) . "\n";
-//   //     foreach($childNode->childNodes as $k => $trchildNode){
-//   //       echo $trchildNode->nodeName . "\n";
-//   //       if ($trchildNode->nodeName == 'td'){
-//   //         echo $k . ' : ' .$trchildNode->nodeValue . "\n";
-//   //       }
-//   //     }
-//   //   }
-//   // }
-//   // var_dump($sectiontable->nodeValue);
-// }
+  // foreach($sectiontable->childNodes as $childNode){
+  //   if ($childNode->nodeName == 'tr'){
+  //     // $childNode->normalize();
+  //     echo count($childNode->childNodes) . "\n";
+  //     foreach($childNode->childNodes as $k => $trchildNode){
+  //       echo $trchildNode->nodeName . "\n";
+  //       if ($trchildNode->nodeName == 'td'){
+  //         echo $k . ' : ' .$trchildNode->nodeValue . "\n";
+  //       }
+  //     }
+  //   }
+  // }
+  // var_dump($sectiontable->nodeValue);
+}
 
+file_put_contents('json/secondsurvey.json', json_encode($data, JSON_PRETTY_PRINT));
 // $xml = file_get_contents('https://travellermap.com/doc/secondsurvey');
 // var_dump($serializer->decode($xml, 'xml'));
+$data = [];
 
 function table2rows(DOMNode $table, $headers = true){
   $keys = [];
   $rows = [];
+
   foreach($table->childNodes as $childNode){
     if ($childNode->nodeName == 'tr'){
       $row = [];
       $childNode->normalize();
       foreach($childNode->childNodes as $k => $trchildNode){
         if ($trchildNode->nodeName == 'td'){
-          $row[$k] = trim($trchildNode->nodeValue);
+          $v = preg_replace(['/\n/','/\s+/'],['',' '],trim($trchildNode->nodeValue));
+          $row[$k] = $v;
         } elseif ($trchildNode->nodeName == 'th'){
           $keys[$k] = trim($trchildNode->nodeValue);
         }
@@ -626,7 +643,7 @@ foreach(array_keys($data) as $sectionname){
 }
 
 
-file_put_contents('json/allegiances_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/t5ss/allegiances')), JSON_PRETTY_PRINT));
-file_put_contents('json/sophonts_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/t5ss/sophonts')), JSON_PRETTY_PRINT));
-file_put_contents('json/milieux_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/api/milieux')), JSON_PRETTY_PRINT));
+// file_put_contents('json/allegiances_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/t5ss/allegiances')), JSON_PRETTY_PRINT));
+// file_put_contents('json/sophonts_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/t5ss/sophonts')), JSON_PRETTY_PRINT));
+// file_put_contents('json/milieux_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/api/milieux')), JSON_PRETTY_PRINT));
 
