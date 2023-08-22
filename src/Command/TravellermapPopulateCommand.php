@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Service\TravellerMapApi;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -16,26 +17,43 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class TravellermapPopulateCommand extends Command
 {
+    public function __construct(
+        private TravellerMapApi $travellerMapApi
+    ){
+        parent::__construct();
+    }
     protected function configure(): void
     {
         $this
-            ->addArgument('arg1', InputArgument::OPTIONAL, 'Argument description')
-            ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
+            ->addOption('universe', 'u', InputOption::VALUE_NONE, 'Populate the base list of sectors')
+            ->addOption('sector', 's', InputOption::VALUE_REQUIRED, 'Populate sector metadata for known sectors')
+            ->addOption('worlds', 'w', InputOption::VALUE_REQUIRED, 'Populate worlds for known sectors')
+            ->addOption('metadata', 'm', InputOption::VALUE_NONE, 'Populate metadata tables')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $arg1 = $input->getArgument('arg1');
 
-        if ($arg1) {
-            $io->note(sprintf('You passed an argument: %s', $arg1));
+        if ($sector = $input->getOption('universe')) {
+            $io->writeln('Populating worlds in sector ' . $sector);
+            var_dump($this->travellerMapApi->getUniverse());
+        }if ($sector = $input->getOption('sector')) {
+            $io->writeln('Populating sector ' . $sector);
+        } elseif ($sector = $input->getOption('worlds')) {
+            $io->writeln('Populating worlds in sector ' . $sector);
+            var_dump($this->travellerMapApi->getWorlds($sector));
+        } else {
+            $io->writeln('Populating all sectors');
+            var_dump($this->travellerMapApi->getSecondSurveyMetadata());
+            
         }
+        
 
-        if ($input->getOption('option1')) {
-            // ...
-        }
+        // if ($input->getOption('option1')) {
+        //     // ...
+        // }
 
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
 
