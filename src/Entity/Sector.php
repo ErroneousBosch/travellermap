@@ -42,9 +42,17 @@ class Sector
     #[ORM\OneToMany(mappedBy: 'sector', targetEntity: World::class)]
     private Collection $worlds;
 
+    #[ORM\ManyToMany(targetEntity: Sophont::class, mappedBy: 'location')]
+    private Collection $sophonts;
+
+    #[ORM\ManyToMany(targetEntity: Allegiance::class, mappedBy: 'location')]
+    private Collection $allegiances;
+
     public function __construct()
     {
         $this->worlds = new ArrayCollection();
+        $this->sophonts = new ArrayCollection();
+        $this->allegiances = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -173,6 +181,60 @@ class Sector
             if ($world->getSector() === $this) {
                 $world->setSector(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sophont>
+     */
+    public function getSophonts(): Collection
+    {
+        return $this->sophonts;
+    }
+
+    public function addSophont(Sophont $sophont): static
+    {
+        if (!$this->sophonts->contains($sophont)) {
+            $this->sophonts->add($sophont);
+            $sophont->addLocation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSophont(Sophont $sophont): static
+    {
+        if ($this->sophonts->removeElement($sophont)) {
+            $sophont->removeLocation($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Allegiance>
+     */
+    public function getAllegiances(): Collection
+    {
+        return $this->allegiances;
+    }
+
+    public function addAllegiance(Allegiance $allegiance): static
+    {
+        if (!$this->allegiances->contains($allegiance)) {
+            $this->allegiances->add($allegiance);
+            $allegiance->addLocation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAllegiance(Allegiance $allegiance): static
+    {
+        if ($this->allegiances->removeElement($allegiance)) {
+            $allegiance->removeLocation($this);
         }
 
         return $this;

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\WorldRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WorldRepository::class)]
@@ -46,9 +48,6 @@ class World
 
     #[ORM\Column(length: 1, nullable: true)]
     private ?string $tech_level = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?array $remarks = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $importance = null;
@@ -115,6 +114,14 @@ class World
 
     #[ORM\Column(nullable: true)]
     private ?int $ru = null;
+
+    #[ORM\ManyToMany(targetEntity: Remark::class, inversedBy: 'worlds')]
+    private Collection $remarks;
+
+    public function __construct()
+    {
+        $this->remarks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -249,18 +256,6 @@ class World
     public function setTechLevel(?string $tech_level): static
     {
         $this->tech_level = $tech_level;
-
-        return $this;
-    }
-
-    public function getRemarks(): ?array
-    {
-        return $this->remarks;
-    }
-
-    public function setRemarks(?array $remarks): static
-    {
-        $this->remarks = $remarks;
 
         return $this;
     }
@@ -528,4 +523,29 @@ class World
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Remark>
+     */
+    public function getRemarks(): Collection
+    {
+        return $this->remarks;
+    }
+
+    public function addRemark(Remark $remark): static
+    {
+        if (!$this->remarks->contains($remark)) {
+            $this->remarks->add($remark);
+        }
+
+        return $this;
+    }
+
+    public function removeRemark(Remark $remark): static
+    {
+        $this->remarks->removeElement($remark);
+
+        return $this;
+    }
+
 }
