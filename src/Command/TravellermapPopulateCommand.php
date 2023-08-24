@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Entity\Allegiance;
 use App\Entity\Metadata;
 use App\Entity\Remark;
+use App\Entity\Sector;
 use App\Entity\Sophont;
 use App\Repository\AllegianceRepository;
 use App\Repository\MetadataRepository;
@@ -47,8 +48,14 @@ class TravellermapPopulateCommand extends Command
         private WorldRepository $worldRepository,
     ){
         parent::__construct();
+        $defaultContext = [
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function (object $object, string $format, array $context): string {
+                return $object->getName();
+            },
+        ];
+        $normalizer = new ObjectNormalizer(null, null, null, null, null, null, $defaultContext);
                 $this->serializer = new Serializer(
-            [new ObjectNormalizer()],
+            [$normalizer],
             [new XmlEncoder(), new JsonEncoder(), new CsvEncoder()]
         );
 
@@ -215,9 +222,25 @@ class TravellermapPopulateCommand extends Command
         if (!empty($sectordata['Subsectors'])){
             $sectordata['Subsectors'] = array_combine(array_column($sectordata['Subsectors']['Subsector'], '@Index'), array_column($sectordata['Subsectors']['Subsector'], '#'));
         }
+        if (!empty($sectordata['Allegiances'])){
+            foreach(array_column($sectordata['Allegiances']['Allegiance'], '@Code') as $code){
+                $allegiances[] = $this->allegianceRepository->findOneBy(['code' => $code]);
+            }
+        unset($sectordata['Allegiances']);
+        }
         #@todo Handle remaining relevant metadata models: https://travellermap.com/doc/metadata 
         #@todo milieu, uniqid, etc
         #@todo add extracomments field to Sector entity
-        var_dump($sectordata);
+        $entity = $this->serializer->deserialize(
+            $this->serializer->serialize($sectordata, 'json'),
+            Sector::class,
+            'json'
+        );
+        
+        
+        foreach($allegiances as $allegiance){
+            $entity->addAllegiance($allegiance);
+        }
+        echo$this->serializer->serialize($entity, 'json');
     }
 }
