@@ -68,15 +68,9 @@ class TravellermapPopulateCommand extends Command
         $this->io = new SymfonyStyle($input, $output);
 
         if ($sector = $input->getOption('universe')) {
-            $this->io->writeln('Grabbing and populating Sectors');
-            $sectors = $this->travellerMapApi->getUniverse();
-            foreach ($sectors as $sector) {
-                $this->io->writeln('Populating sector ' . $sector);
-
-                $this->travellerMapApi->getSector($sector);
-            }
+            $this->popSectors();
         }if ($sector = $input->getOption('sector')) {
-            $this->io->writeln('Populating sector ' . $sector);
+            $this->popSector($sector);
         } elseif ($sector = $input->getOption('worlds')) {
             $this->io->writeln('Populating worlds in sector ' . $sector);
             var_dump($this->travellerMapApi->getWorlds($sector));
@@ -191,5 +185,22 @@ class TravellermapPopulateCommand extends Command
             $this->entityManager->persist($sophont);
         }
         $this->entityManager->flush();
+    }
+
+    private function popSectors() {
+        $this->io->writeln('Pulling Universe and Populating Sectors');
+        foreach ($this->travellerMapApi->getUniverse()['Sectors'] as $sector) {
+            $sector['Abbreviation'] = $sector['Abbreviation'] ?? $sector['Names'][0]['Text'];
+            $sectordata = $this->travellerMapApi->getSector($sector['Names'][0]['Text']);
+            // $sectordata['uniqid'] =  $sector['Milieu'] . ':' . (string) $sector['X'] . ':' . (string) $sector['Y'];
+
+            // var_dump($sectordata);
+        }
+    }
+
+    private function popSector ($sector, $getWorlds = false){
+        $this->io->writeln('Populating metadata for sector ' . $sector);
+        $sectordata = $this->travellerMapApi->getSector($sector);
+        var_dump($sectordata);
     }
 }
