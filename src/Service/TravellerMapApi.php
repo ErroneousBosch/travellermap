@@ -27,65 +27,74 @@ class TravellerMapApi
     }
 
     public function getAllegiances() {
-        $data = $this->client->request(
-            'GET',
-            $this->gitUrl . '/t5ss/allegiance_codes.tab'
+      $data = $this->fetch(
+            'https://travellermap.com/t5ss/allegiances'
         );
 
         return $this->serializer->decode(
-            $data->getContent(),
+            $data,
             'csv',
             [CsvEncoder::DELIMITER_KEY => "\t"]
         );
     }
 
     public function getSophonts() {
-        $data = $this->client->request(
-            'GET',
-            $this->gitUrl . '/t5ss/sophont_codes.tab'
+      $data = $this->fetch(
+            'https://travellermap.com/t5ss/sophonts'
         );
 
         return $this->serializer->decode(
-            $data->getContent(),
+            $data,
             'csv',
             [CsvEncoder::DELIMITER_KEY => "\t"]
         );
     }
 
     public function getSector($sector) {
-        $data = $this->client->request(
-            'GET',
+      $data = $this->fetch(
             'https://travellermap.com/data/' . $sector . '/metadata'
         );
         return $this->serializer->decode(
-            $data->getContent(),
+            $data,
             'xml'
         );
     }
 
     public function getWorlds($sector) {
-        $data = $this->client->request(
-            'GET',
+      $data = $this->fetch(
             'https://travellermap.com/data/' . $sector . '/tab'
         );
 
         return $this->serializer->decode(
-            $data->getContent(),
+            $data,
             'csv',
             [CsvEncoder::DELIMITER_KEY => "\t"]
         );
     }       
 
     public function getUniverse() {
-        $data = $this->client->request(
-            'GET',
+        $data = $this->fetch(
             'https://travellermap.com/data'
         );
 
         return $this->serializer->decode(
-            $data->getContent(),
+            $data,
             'json'
         );
     }
 
+    private function fetch($url) : string|NULL{
+      $retry = 0;
+      do {
+        $data = $this->client->request(
+            'GET',
+            $url
+        );
+        if (($data->getStatusCode() ?? 200) != 200) {
+          sleep(1);
+          $retry++;
+        }
+      } while ($data->getStatusCode() != 200 && $retry < 5);
+      return $data->getContent() ?? NULL;
+    }
 }
