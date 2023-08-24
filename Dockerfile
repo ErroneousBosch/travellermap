@@ -1,7 +1,7 @@
 FROM php:apache
 
 RUN apt-get update; \
- apt-get install -y libyaml-dev git zip
+ apt-get install -y libyaml-dev git zip sqlite3
 
 RUN pecl install yaml \
 && pecl install apcu \
