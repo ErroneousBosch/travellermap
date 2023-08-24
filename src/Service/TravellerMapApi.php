@@ -2,9 +2,6 @@
 
 namespace App\Service;
 
-use DOMDocument;
-use DOMNode;
-use DOMXPath;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
