@@ -48,6 +48,9 @@ class Sector
     #[ORM\ManyToMany(targetEntity: Allegiance::class, mappedBy: 'location')]
     private Collection $allegiances;
 
+    #[ORM\Column(length: 255)]
+    private ?string $uniqid = null;
+
     public function __construct()
     {
         $this->worlds = new ArrayCollection();
@@ -98,7 +101,7 @@ class Sector
 
     public function getAbbreviation(): ?string
     {
-        return $this->abbreviation;
+        return $this->abbreviation ?? $this->name;
     }
 
     public function setAbbreviation(?string $abbreviation): static
@@ -236,6 +239,18 @@ class Sector
         if ($this->allegiances->removeElement($allegiance)) {
             $allegiance->removeLocation($this);
         }
+
+        return $this;
+    }
+
+    public function getUniqid(): ?string
+    {
+        return $this->uniqid;
+    }
+
+    public function setUniqid(string $uniqid): static
+    {
+        $this->uniqid = $uniqid;
 
         return $this;
     }

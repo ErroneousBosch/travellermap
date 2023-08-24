@@ -118,9 +118,16 @@ class World
     #[ORM\ManyToMany(targetEntity: Remark::class, inversedBy: 'worlds')]
     private Collection $remarks;
 
+    #[ORM\Column(length: 255)]
+    private ?string $uniqid = null;
+
+    #[ORM\OneToMany(mappedBy: 'control', targetEntity: Remark::class)]
+    private Collection $controlled;
+
     public function __construct()
     {
         $this->remarks = new ArrayCollection();
+        $this->controlled = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -544,6 +551,48 @@ class World
     public function removeRemark(Remark $remark): static
     {
         $this->remarks->removeElement($remark);
+
+        return $this;
+    }
+
+    public function getUniqid(): ?string
+    {
+        return $this->uniqid;
+    }
+
+    public function setUniqid(string $uniqid): static
+    {
+        $this->uniqid = $uniqid;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Remark>
+     */
+    public function getControlled(): Collection
+    {
+        return $this->controlled;
+    }
+
+    public function addControlled(Remark $controlled): static
+    {
+        if (!$this->controlled->contains($controlled)) {
+            $this->controlled->add($controlled);
+            $controlled->setControl($this);
+        }
+
+        return $this;
+    }
+
+    public function removeControlled(Remark $controlled): static
+    {
+        if ($this->controlled->removeElement($controlled)) {
+            // set the owning side to null (unless already changed)
+            if ($controlled->getControl() === $this) {
+                $controlled->setControl(null);
+            }
+        }
 
         return $this;
     }

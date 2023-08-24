@@ -33,6 +33,12 @@ class Remark
     #[ORM\ManyToOne(inversedBy: 'remarks')]
     private ?Sophont $sophonts = null;
 
+    #[ORM\ManyToOne(inversedBy: 'remarks')]
+    private ?Allegiance $allegiance = null;
+
+    #[ORM\ManyToOne(inversedBy: 'controlled')]
+    private ?World $control = null;
+
     public function __construct()
     {
         $this->worlds = new ArrayCollection();
@@ -126,6 +132,30 @@ class Remark
     public function setSophonts(?Sophont $sophonts): static
     {
         $this->sophonts = $sophonts;
+
+        return $this;
+    }
+
+    public function getAllegiance(): ?Allegiance
+    {
+        return $this->allegiance;
+    }
+
+    public function setAllegiance(?Allegiance $allegiance): static
+    {
+        $this->allegiance = $allegiance;
+
+        return $this;
+    }
+
+    public function getControl(): ?World
+    {
+        return $this->control;
+    }
+
+    public function setControl(?World $control): static
+    {
+        $this->control = $control;
 
         return $this;
     }

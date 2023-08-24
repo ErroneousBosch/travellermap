@@ -27,9 +27,13 @@ class Allegiance
     #[ORM\ManyToMany(targetEntity: Sector::class, inversedBy: 'allegiances')]
     private Collection $location;
 
+    #[ORM\OneToMany(mappedBy: 'allegiance', targetEntity: Remark::class)]
+    private Collection $remarks;
+
     public function __construct()
     {
         $this->location = new ArrayCollection();
+        $this->remarks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -93,6 +97,36 @@ class Allegiance
     public function removeLocation(Sector $location): static
     {
         $this->location->removeElement($location);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Remark>
+     */
+    public function getRemarks(): Collection
+    {
+        return $this->remarks;
+    }
+
+    public function addRemark(Remark $remark): static
+    {
+        if (!$this->remarks->contains($remark)) {
+            $this->remarks->add($remark);
+            $remark->setAllegiance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRemark(Remark $remark): static
+    {
+        if ($this->remarks->removeElement($remark)) {
+            // set the owning side to null (unless already changed)
+            if ($remark->getAllegiance() === $this) {
+                $remark->setAllegiance(null);
+            }
+        }
 
         return $this;
     }
