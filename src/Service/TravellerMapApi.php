@@ -15,6 +15,7 @@ use Symfony\Component\Serializer\Serializer;
 class TravellerMapApi
 {
     private Serializer $serializer;
+    private string $gitUrl = 'https://raw.githubusercontent.com/inexorabletash/travellermap/main/res/';
  
     public function __construct(
         private HttpClientInterface $client)
@@ -28,12 +29,26 @@ class TravellerMapApi
     public function getAllegiances() {
         $data = $this->client->request(
             'GET',
-            'https://travellermap.com/t5ss/allegiances'
+            $this->gitUrl . '/t5ss/allegiance_codes.tab'
         );
 
         return $this->serializer->decode(
             $data->getContent(),
-            'json'
+            'csv',
+            [CsvEncoder::DELIMITER_KEY => "\t"]
+        );
+    }
+
+    public function getSophonts() {
+        $data = $this->client->request(
+            'GET',
+            $this->gitUrl . '/t5ss/sophont_codes.tab'
+        );
+
+        return $this->serializer->decode(
+            $data->getContent(),
+            'csv',
+            [CsvEncoder::DELIMITER_KEY => "\t"]
         );
     }
 
@@ -72,56 +87,5 @@ class TravellerMapApi
             'json'
         );
     }
-
-    public function getSecondSurveyMetadata() {
-    $xml = file_get_contents('https://travellermap.com/doc/secondsurvey');
-    libxml_use_internal_errors(true);
-    $doc = new DOMDocument();
-    $doc->loadHTML($xml);
-    // $doc->normalizeDocument();
-    $xpath = new DOMXPath($doc);
-    $rows = [];
-    foreach($xpath->query('//section') as $section){
-        $sectionname = $section->getAttribute('id');
-        foreach($xpath->query('//section[@id="' . $sectionname . '"]/table') as $table){
-            $rows[] = $this->table2rows($table);
-        }
-        
-    }
-    return $rows;
-
-    }
-
-    private function table2rows(DOMNode $table, $headers = true){
-        $keys = [];
-        $rows = [];
-      
-        foreach($table->childNodes as $childNode){
-          if ($childNode->nodeName == 'tr'){
-            $row = [];
-            $childNode->normalize();
-            foreach($childNode->childNodes as $k => $trchildNode){
-              if ($trchildNode->nodeName == 'td'){
-                $v = preg_replace(['/\n/','/\s+/'],['',' '],trim($trchildNode->nodeValue));
-                $row[$k] = $v;
-              } elseif ($trchildNode->nodeName == 'th'){
-                $keys[$k] = trim($trchildNode->nodeValue);
-              }
-            }
-            if (count($row) == 0){
-              continue;
-            }
-            if (count($keys) == 0 && $headers){
-              $keys = $row;
-            } else {
-              if (count($keys) != count($row) && $headers){
-                $row = array_pad($row, count($keys), end($row));
-              }
-              $rows[] = array_combine($keys, $row);
-            }
-          }
-        }
-        return $rows;
-      }
 
 }

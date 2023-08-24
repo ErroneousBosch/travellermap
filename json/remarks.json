@@ -1,0 +1,322 @@
+[
+    {
+        "code": "As",
+        "description": "Asteroid Belt",
+        "extra_info": "Siz 0"
+    },
+    {
+        "code": "De",
+        "description": "Desert",
+        "extra_info": "Atm 2-9, Hyd 0"
+    },
+    {
+        "code": "Fl",
+        "description": "Fluid Hydrographics (in place of water)",
+        "extra_info": "Atm A-C, Hyd 1+"
+    },
+    {
+        "code": "Ga",
+        "description": "Garden World",
+        "extra_info": "Siz 6-8, Atm 5,6,8, Hyd 5-7"
+    },
+    {
+        "code": "He",
+        "description": "Hellworld",
+        "extra_info": "Siz 3+, Atm 2,4,7,9-C, Hyd 0-2"
+    },
+    {
+        "code": "Ic",
+        "description": "Ice Capped",
+        "extra_info": "Atm 0-1, Hyd 1+"
+    },
+    {
+        "code": "Oc",
+        "description": "Ocean World",
+        "extra_info": "Siz A+, Hyd A"
+    },
+    {
+        "code": "Va",
+        "description": "Vacuum World",
+        "extra_info": "Atm 0"
+    },
+    {
+        "code": "Wa",
+        "description": "Water World",
+        "extra_info": "Siz 3-9, Atm 3-9, Hyd A"
+    },
+    {
+        "code": "Di",
+        "description": "Dieback",
+        "extra_info": "PGL 0, TL 1+"
+    },
+    {
+        "code": "Ba",
+        "description": "Barren",
+        "extra_info": "PGL 0, TL 0"
+    },
+    {
+        "code": "Lo",
+        "description": "Low Population",
+        "extra_info": "Pop 1-3"
+    },
+    {
+        "code": "Ni",
+        "description": "Non-Industrial",
+        "extra_info": "Pop 4-6"
+    },
+    {
+        "code": "Ph",
+        "description": "Pre-High Population",
+        "extra_info": "Pop 8"
+    },
+    {
+        "code": "Hi",
+        "description": "High Population",
+        "extra_info": "Pop 9+"
+    },
+    {
+        "code": "Pa",
+        "description": "Pre-Agricultural",
+        "extra_info": "Atm 4-9, Hyd 4-8, Pop 4,8"
+    },
+    {
+        "code": "Ag",
+        "description": "Agricultural",
+        "extra_info": "Atm 4-9, Hyg 4-8, Pop 5-7"
+    },
+    {
+        "code": "Na",
+        "description": "Non-Agricultural",
+        "extra_info": "Atm 3-, Hyd 3-, Pop 6+"
+    },
+    {
+        "code": "Pi",
+        "description": "Pre-Industrial",
+        "extra_info": "Atm 0,1,2,4,7,9, Pop 7-8"
+    },
+    {
+        "code": "In",
+        "description": "Industrialized",
+        "extra_info": "Atm 0,1,2,4,7,9-C, Pop 9+"
+    },
+    {
+        "code": "Po",
+        "description": "Poor",
+        "extra_info": "Atm 2-5, Hyd 3-"
+    },
+    {
+        "code": "Pr",
+        "description": "Pre-Rich",
+        "extra_info": "Atm 6,8, Pop 5,9"
+    },
+    {
+        "code": "Ri",
+        "description": "Rich",
+        "extra_info": "Atm 6,8, Pop 6-8"
+    },
+    {
+        "code": "Fr",
+        "description": "Frozen",
+        "extra_info": "Siz 2-9, Hyd 1+, HZ +2 or Outer"
+    },
+    {
+        "code": "Ho",
+        "description": "Hot",
+        "extra_info": "HZ -1"
+    },
+    {
+        "code": "Co",
+        "description": "Cold",
+        "extra_info": "HZ +1"
+    },
+    {
+        "code": "Lk",
+        "description": "Locked",
+        "extra_info": "Close Satellite"
+    },
+    {
+        "code": "Tr",
+        "description": "Tropic",
+        "extra_info": "Siz 6-9, Atm 4-9, Hyd 3-7, HZ -1"
+    },
+    {
+        "code": "Tu",
+        "description": "Tundra",
+        "extra_info": "Siz 6-9, Atm 4-9, Hyd 3-7, HZ +1"
+    },
+    {
+        "code": "Tz",
+        "description": "Twilight Zone",
+        "extra_info": "Orbit 0-1"
+    },
+    {
+        "code": "Fa",
+        "description": "Farming",
+        "extra_info": "Atm 4-9, Hyd 4-8, Pop 2-6, Not Main World, HZ"
+    },
+    {
+        "code": "Mi",
+        "description": "Mining",
+        "extra_info": "Pop 2-6, Not Main World, Main World=Industrialized"
+    },
+    {
+        "code": "Mr",
+        "description": "Military Rule",
+        "extra_info": "By regional Allegiance power"
+    },
+    {
+        "code": "Px",
+        "description": "Prison, Exile Camp",
+        "extra_info": "Main World"
+    },
+    {
+        "code": "Pe",
+        "description": "Penal Colony",
+        "extra_info": "Not Main World"
+    },
+    {
+        "code": "Re",
+        "description": "Reserve"
+    },
+    {
+        "code": "Cp",
+        "description": "Subsector Capital"
+    },
+    {
+        "code": "Cs",
+        "description": "Sector Capital"
+    },
+    {
+        "code": "Cx",
+        "description": "Capital"
+    },
+    {
+        "code": "Sa",
+        "description": "Satellite",
+        "extra_info": "Main World is a moon of a Gas Giant"
+    },
+    {
+        "code": "Fo",
+        "description": "Forbidden",
+        "extra_info": "Red Zone"
+    },
+    {
+        "code": "Pz",
+        "description": "Puzzle",
+        "extra_info": "Amber Zone, Pop 7+"
+    },
+    {
+        "code": "Da",
+        "description": "Danger",
+        "extra_info": "Amber Zone, Pop 6-"
+    },
+    {
+        "code": "Ab",
+        "description": "Data Repository"
+    },
+    {
+        "code": "An",
+        "description": "Ancient Site"
+    },
+    {
+        "code": "Rs",
+        "description": "Research Station",
+        "extra_info": "Imperial"
+    },
+    {
+        "code": "Nh",
+        "description": "Non-Hiver Population",
+        "extra_info": "Hiver"
+    },
+    {
+        "code": "Nk",
+        "description": "Non-Kkree Population",
+        "extra_info": "K'kree"
+    },
+    {
+        "code": "Tp",
+        "description": "Terra-prime",
+        "extra_info": "Adventure 5: Leviathan"
+    },
+    {
+        "code": "Tn",
+        "description": "Terra-norm",
+        "extra_info": "Adventure 5: Leviathan"
+    },
+    {
+        "code": "Lt",
+        "description": "Low Technology",
+        "extra_info": "Mongoose Publishing"
+    },
+    {
+        "code": "Ht",
+        "description": "High Technology",
+        "extra_info": "Mongoose Publishing"
+    },
+    {
+        "code": "Fa",
+        "description": "Fascinating",
+        "extra_info": "Hiver"
+    },
+    {
+        "code": "St",
+        "description": "Steppeworld",
+        "extra_info": "K'kree"
+    },
+    {
+        "code": "Ex",
+        "description": "Exile Camp",
+        "extra_info": "Imperial"
+    },
+    {
+        "code": "Pr",
+        "description": "Prison World",
+        "extra_info": "Imperial"
+    },
+    {
+        "code": "Xb",
+        "description": "Xboat Station",
+        "extra_info": "Imperial"
+    },
+    {
+        "code": "Cr",
+        "description": "Reserve Capital",
+        "extra_info": "Zhodani"
+    },
+    {
+        "code": "RsA",
+        "description": "Research Station Alpha"
+    },
+    {
+        "code": "RsB",
+        "description": "Research Station Beta"
+    },
+    {
+        "code": "RsG",
+        "description": "Research Station Gamma"
+    },
+    {
+        "code": "RsD",
+        "description": "Research Station Delta"
+    },
+    {
+        "code": "RsE",
+        "description": "Research Station Epsilon"
+    },
+    {
+        "code": "RsZ",
+        "description": "Research Station Zeta"
+    },
+    {
+        "code": "RsH",
+        "description": "Research Station Eta"
+    },
+    {
+        "code": "RsT",
+        "description": "Research Station Theta"
+    },
+    {
+        "code": "Cy",
+        "description": "Colony"
+    }
+]

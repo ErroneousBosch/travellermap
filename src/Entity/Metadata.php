@@ -17,7 +17,7 @@ class Metadata
     private ?string $bundle = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $abbreviation = null;
+    private ?string $code = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
@@ -45,14 +45,14 @@ class Metadata
         return $this;
     }
 
-    public function getAbbreviation(): ?string
+    public function getCode(): ?string
     {
-        return $this->abbreviation;
+        return $this->code;
     }
 
-    public function setAbbreviation(string $abbreviation): static
+    public function setCode(string $code): static
     {
-        $this->abbreviation = $abbreviation;
+        $this->code = $code;
 
         return $this;
     }
