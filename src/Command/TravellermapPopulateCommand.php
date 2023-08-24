@@ -201,6 +201,23 @@ class TravellermapPopulateCommand extends Command
     private function popSector ($sector, $getWorlds = false){
         $this->io->writeln('Populating metadata for sector ' . $sector);
         $sectordata = $this->travellerMapApi->getSector($sector);
+        $sectordata['names'] = $sectordata['Name'];
+        $sectordata['Name'] = (is_string($sectordata['names'][0])) ? $sectordata['names'][0] : $sectordata['names'][0]['#'];
+        array_walk($sectordata['names'], function(&$item, $key){
+            if (is_array($item)) {
+                $item['name'] = $item['#'];
+                unset($item['#']);
+                $item['language'] = $item['@Lang'];
+            } else {
+                $item = ['name' => $item, 'language' => 'An'];
+            }
+        });
+        if (!empty($sectordata['Subsectors'])){
+            $sectordata['Subsectors'] = array_combine(array_column($sectordata['Subsectors']['Subsector'], '@Index'), array_column($sectordata['Subsectors']['Subsector'], '#'));
+        }
+        #@todo Handle remaining relevant metadata models: https://travellermap.com/doc/metadata 
+        #@todo milieu, uniqid, etc
+        #@todo add extracomments field to Sector entity
         var_dump($sectordata);
     }
 }
