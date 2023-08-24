@@ -51,6 +51,12 @@ class Sector
     #[ORM\Column(length: 255)]
     private ?string $uniqid = null;
 
+    #[ORM\Column(length: 32)]
+    private ?string $milieu = null;
+
+    #[ORM\Column(length: 32, nullable: true)]
+    private ?string $tags = null;
+
     public function __construct()
     {
         $this->worlds = new ArrayCollection();
@@ -251,6 +257,30 @@ class Sector
     public function setUniqid(string $uniqid): static
     {
         $this->uniqid = $uniqid;
+
+        return $this;
+    }
+
+    public function getMilieu(): ?string
+    {
+        return $this->milieu;
+    }
+
+    public function setMilieu(string $milieu): static
+    {
+        $this->milieu = $milieu;
+
+        return $this;
+    }
+
+    public function getTags(): ?string
+    {
+        return $this->tags;
+    }
+
+    public function setTags(?string $tags): static
+    {
+        $this->tags = $tags;
 
         return $this;
     }

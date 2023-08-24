@@ -124,6 +124,9 @@ class World
     #[ORM\OneToMany(mappedBy: 'control', targetEntity: Remark::class)]
     private Collection $controlled;
 
+    #[ORM\Column(length: 32, nullable: true)]
+    private ?string $milieu = null;
+
     public function __construct()
     {
         $this->remarks = new ArrayCollection();
@@ -593,6 +596,18 @@ class World
                 $controlled->setControl(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMilieu(): ?string
+    {
+        return $this->milieu;
+    }
+
+    public function setMilieu(?string $milieu): static
+    {
+        $this->milieu = $milieu;
 
         return $this;
     }
