@@ -96,12 +96,12 @@ class TravellermapPopulateCommand extends Command
 
     private function popMetadata(){
         $this->io->writeln('Populating Metadata');
-            $bundle = '';
+            // $bundle = '';
             foreach ($this->travellerMapApi->getMetadata() as $item) {
-                if ($bundle != $item['bundle']) {
-                    $bundle = $item['bundle'];
-                    $this->io->writeln('Populating bundle ' . $bundle);
-                }
+                // if ($bundle != $item['bundle']) {
+                //     $bundle = $item['bundle'];
+                //     $this->io->writeln('Populating bundle ' . $bundle);
+                // }
                 if ($existing = $this->metadataRepository->findOneBy(['bundle' => $item['bundle'], 'code' => $item['code']])){
                     $metadata = $this->serializer->deserialize(
                         $this->serializer->serialize($item, 'json'),
