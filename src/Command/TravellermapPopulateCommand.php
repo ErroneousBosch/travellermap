@@ -2,7 +2,18 @@
 
 namespace App\Command;
 
+use App\Entity\Allegiance;
+use App\Entity\Metadata;
+use App\Entity\Remark;
+use App\Entity\Sophont;
+use App\Repository\AllegianceRepository;
+use App\Repository\MetadataRepository;
+use App\Repository\RemarkRepository;
+use App\Repository\SectorRepository;
+use App\Repository\SophontRepository;
+use App\Repository\WorldRepository;
 use App\Service\TravellerMapApi;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -10,6 +21,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Serializer\Encoder\CsvEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 #[AsCommand(
     name: 'travellermap:populate',
@@ -17,10 +34,22 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class TravellermapPopulateCommand extends Command
 {
+    private Serializer $serializer;
     public function __construct(
-        private TravellerMapApi $travellerMapApi
+        private TravellerMapApi $travellerMapApi,
+        private EntityManagerInterface $entityManager,
+        private MetadataRepository $metadataRepository,
+        private SophontRepository $sophontRepository,
+        private AllegianceRepository $allegianceRepository,
+        private RemarkRepository $remarkRepository,
+        private SectorRepository $sectorRepository,
+        private WorldRepository $worldRepository,
     ){
         parent::__construct();
+                $this->serializer = new Serializer(
+            [new ObjectNormalizer()],
+            [new XmlEncoder(), new JsonEncoder(), new CsvEncoder()]
+        );
     }
     protected function configure(): void
     {
@@ -37,17 +66,105 @@ class TravellermapPopulateCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         if ($sector = $input->getOption('universe')) {
-            $io->writeln('Populating worlds in sector ' . $sector);
-            var_dump($this->travellerMapApi->getUniverse());
+            $io->writeln('Grabbing and populating Sectors');
+            $sectors = $this->travellerMapApi->getUniverse();
+            foreach ($sectors as $sector) {
+                $io->writeln('Populating sector ' . $sector);
+
+                $this->travellerMapApi->getSector($sector);
+            }
         }if ($sector = $input->getOption('sector')) {
             $io->writeln('Populating sector ' . $sector);
         } elseif ($sector = $input->getOption('worlds')) {
             $io->writeln('Populating worlds in sector ' . $sector);
             var_dump($this->travellerMapApi->getWorlds($sector));
-        } else {
-            $io->writeln('Populating all sectors');
-            var_dump($this->travellerMapApi->getSecondSurveyMetadata());
-            
+        } elseif ($n = $input->getOption('metadata')){
+            $io->writeln('Populating Metadata');
+            $bundle = '';
+            foreach ($this->travellerMapApi->getMetadata() as $item) {
+                if ($bundle != $item['bundle']) {
+                    $bundle = $item['bundle'];
+                    $io->writeln('Populating bundle ' . $bundle);
+                }
+                if ($existing = $this->metadataRepository->findOneBy(['bundle' => $item['bundle'], 'code' => $item['code']])){
+                    $metadata = $this->serializer->deserialize(
+                        $this->serializer->serialize($item, 'json'),
+                        Metadata::class,
+                        'json',
+                        [AbstractNormalizer::OBJECT_TO_POPULATE => $existing]
+                    );
+                } else {
+                    $metadata = $this->serializer->deserialize(
+                        $this->serializer->serialize($item, 'json'),
+                        Metadata::class,
+                        'json'
+                    );
+                }
+                $this->entityManager->persist($metadata);
+            }
+            $this->entityManager->flush();
+            $io->writeln('Populating Remarks');
+            foreach ($this->travellerMapApi->getRemarks() as $item) {
+                if ($existing = $this->remarkRepository->findOneBy(['code' => $item['code']])){
+                    $remark = $this->serializer->deserialize(
+                        $this->serializer->serialize($item, 'json'),
+                        Remark::class,
+                        'json',
+                        [AbstractNormalizer::OBJECT_TO_POPULATE => $existing]
+                    );
+                } else {
+                    $item['uniqid'] = $item['code'];
+                    $remark = $this->serializer->deserialize(
+                        $this->serializer->serialize($item, 'json'),
+                        Remark::class,
+                        'json'
+                    );
+                }
+                $this->entityManager->persist($remark);
+            }
+            $this->entityManager->flush();
+            $io->writeln('Populating Allegiances');
+            foreach ($this->travellerMapApi->getAllegiances() as $item){
+                if ($existing = $this->allegianceRepository->findOneBy(['code' => $item['Code']])){
+                    $allegiance = $this->serializer->deserialize(
+                        $this->serializer->serialize($item, 'json'),
+                        Allegiance::class,
+                        'json',
+                        [AbstractNormalizer::OBJECT_TO_POPULATE => $existing]
+                    );
+                } else {
+                    $allegiance = $this->serializer->deserialize(
+                        $this->serializer->serialize($item, 'json'),
+                        Allegiance::class,
+                        'json'
+                    );
+                }
+                $this->entityManager->persist($allegiance);
+            }
+            $this->entityManager->flush();
+            $io->writeln('Populating Sophonts');
+            foreach ($this->travellerMapApi->getSophonts() as $item){
+                if ($existing = $this->sophontRepository->findOneBy(['code' => $item['Code']])){
+                    $sophont = $this->serializer->deserialize(
+                        $this->serializer->serialize($item, 'json'),
+                        Sophont::class,
+                        'json',
+                        [AbstractNormalizer::OBJECT_TO_POPULATE => $existing]
+                    );
+                } else {
+                    $sophont = $this->serializer->deserialize(
+                        $this->serializer->serialize($item, 'json'),
+                        Sophont::class,
+                        'json'
+                    );
+                }
+                $this->entityManager->persist($sophont);
+            }
+            $this->entityManager->flush();
+
+        }else {
+            $io->writeln('Listing all sectors');
+            var_dump($this->travellerMapApi->getUniverse());
         }
         
 
@@ -55,7 +172,7 @@ class TravellermapPopulateCommand extends Command
         //     // ...
         // }
 
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+        // $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
 
         return Command::SUCCESS;
     }
