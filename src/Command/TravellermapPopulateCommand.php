@@ -197,50 +197,106 @@ class TravellermapPopulateCommand extends Command
     private function popSectors() {
         $this->io->writeln('Pulling Universe and Populating Sectors');
         foreach ($this->travellerMapApi->getUniverse()['Sectors'] as $sector) {
-            $sector['Abbreviation'] = $sector['Abbreviation'] ?? $sector['Names'][0]['Text'];
-            $sectordata = $this->travellerMapApi->getSector($sector['Names'][0]['Text']);
-            // $sectordata['uniqid'] =  $sector['Milieu'] . ':' . (string) $sector['X'] . ':' . (string) $sector['Y'];
-
-            // var_dump($sectordata);
+            $this->popSector(($sector['Abbreviation']?? $sector['Names'][0]['Text']));
         }
     }
 
     private function popSector ($sector, $getWorlds = false){
         $this->io->writeln('Populating metadata for sector ' . $sector);
         $sectordata = $this->travellerMapApi->getSector($sector);
-        $sectordata['names'] = $sectordata['Name'];
-        $sectordata['Name'] = (is_string($sectordata['names'][0])) ? $sectordata['names'][0] : $sectordata['names'][0]['#'];
-        array_walk($sectordata['names'], function(&$item, $key){
-            if (is_array($item)) {
-                $item['name'] = $item['#'];
-                unset($item['#']);
-                $item['language'] = $item['@Lang'];
-            } else {
-                $item = ['name' => $item, 'language' => 'An'];
-            }
-        });
+        $sectordata['Name'] = $sectordata['Names'][0]['Text'];
+        if (count($sectordata['Names'][0]) == 1) {
+            $sectordata['Names'][0]['Lang'] = 'An';
+        }
         if (!empty($sectordata['Subsectors'])){
-            $sectordata['Subsectors'] = array_combine(array_column($sectordata['Subsectors']['Subsector'], '@Index'), array_column($sectordata['Subsectors']['Subsector'], '#'));
+            $sectordata['Subsectors'] = array_combine(array_column($sectordata['Subsectors'], 'Index'), array_column($sectordata['Subsectors'], 'Name'));
         }
-        if (!empty($sectordata['Allegiances'])){
-            foreach(array_column($sectordata['Allegiances']['Allegiance'], '@Code') as $code){
-                $allegiances[] = $this->allegianceRepository->findOneBy(['code' => $code]);
-            }
-        unset($sectordata['Allegiances']);
-        }
+
+        $sectordata['milieu'] = $sectordata['DataFile']['Milieu'];
+        $sectordata['uniqid'] = $sectordata['milieu'] . ':' . (string) $sectordata['X'] . ':' . (string) $sectordata['Y'];
+        $tags = $sectordata['Tags'] ?? [];
+        unset($sectordata['Tags']);
         #@todo Handle remaining relevant metadata models: https://travellermap.com/doc/metadata 
-        #@todo milieu, uniqid, etc
-        #@todo add extracomments field to Sector entity
+        $allegiances = $sectordata['Allegiances'] ?? [];
+        unset($sectordata['Allegiances']);
         $entity = $this->serializer->deserialize(
             $this->serializer->serialize($sectordata, 'json'),
             Sector::class,
             'json'
         );
-        
-        
-        foreach($allegiances as $allegiance){
-            $entity->addAllegiance($allegiance);
+        if (!empty($allegiances)){
+            foreach(array_column($allegiances, 'Code') as $code){
+                $allegiance = $this->allegianceRepository->findOneBy(['code' => $code]);
+                $entity->addAllegiance($allegiance);
+            }
+            unset($sectordata['Allegiances']);
         }
-        echo$this->serializer->serialize($entity, 'json');
+        preg_match_all('/\b\w/', $sectordata['DataFile']['Source'], $matches);
+        $sourcecode = implode('', $matches[0]);
+        $data_file = $this->metadataRepository->findOneBy(['bundle' => 'data_source', 'code' => $sourcecode]) ?? new Metadata();
+        if (empty($data_file->getId())){
+            $data_file->setCode($sourcecode)
+            ->setName($sectordata['DataFile']['Source'])
+            ->setBundle('data_source')
+            ->setExtraData($sectordata['DataFile']);
+
+            // $this->entityManager->persist($data_file);
+            // $this->entityManager->flush();
+        }
+        $entity->addMetadata($data_file);
+        foreach ($sectordata['Products'] as $product) {
+            preg_match_all('/\b\w/', $product['Title'], $matches);
+            $prodcode = implode('', $matches[0]);
+            $productent = $this->metadataRepository->findOneBy(['bundle' => 'product', 'code' => $prodcode]) ?? new Metadata();
+            if (empty($productent->getId())){
+                $productent->setCode($prodcode)
+                ->setName($product['Title'])
+                ->setBundle('product')
+                ->setExtraData($product);
+                // $this->entityManager->persist($productent);
+                // $this->entityManager->flush();
+            }
+            $entity->addMetadata($productent);
+        }
+        if (!empty($sectordata['Stylesheet'])){
+            $stylesheet = $this->metadataRepository->findOneBy(['bundle' => 'stylesheet', 'code' => $sectordata['uniqid']]) ?? new Metadata();
+            if (empty($stylesheet->getId())){
+                $stylesheet->setCode($sectordata['uniqid'])
+                ->setName($sectordata['uniqid'])
+                ->setBundle('stylesheet')
+                ->setExtraData(['css' =>$sectordata['Stylesheet']]);
+                // $this->entityManager->persist($stylesheet);
+                // $this->entityManager->flush();
+                $entity->addMetadata($stylesheet);
+            }
+        }
+        foreach ($sectordata['Labels'] as $label){
+            $labelent = $this->metadataRepository->findOneBy(['bundle' => 'label', 'code' => $sectordata['uniqid'] . ':' . $label['Hex'] . ':' .$label['Text']]) ?? new Metadata();
+            if (empty($labelent->getId())){
+                $labelent->setCode($sectordata['uniqid'] . ':' . $label['Hex'] . ':' .$label['Text'])
+                ->setName($label['Text'])
+                ->setBundle('label')
+                ->setExtraData($label);
+                // $this->entityManager->persist($labelent);
+                // $this->entityManager->flush();
+            }
+            $entity->addMetadata($labelent);
+        }
+        if (!empty($tags)){
+            $tags = str_contains($tags, 'OTU') ? 'OTU' : $tags;
+            $tagent = $this->metadataRepository->findOneBy(['bundle' => 'tag', 'code' => $tags]) ?? new Metadata();
+            if (empty($tagent->getId())){
+                $tagent->setCode($tags)
+                ->setName($tags)
+                ->setBundle('tag');
+                // $this->entityManager->persist($tagent);
+                // $this->entityManager->flush();
+            }
+            $entity->addMetadata($tagent);
+            
+        }
+
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
     }
 }
