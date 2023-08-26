@@ -14,6 +14,9 @@ class TravellerMapApi
 {
     private Serializer $serializer;
     private string $gitUrl = 'https://raw.githubusercontent.com/inexorabletash/travellermap/main/res/';
+    private string $dataUrl = 'https://travellermap.com/data/';
+    private string $dataUrl2 = 'https://travellermap.com/t5ss/';
+    private string $apiUrl = 'https://travellermap.com/api/';
  
     public function __construct(
         private HttpClientInterface $client,
@@ -42,7 +45,7 @@ class TravellerMapApi
 
     public function getAllegiances() : array {
       $data = $this->fetch(
-            'https://travellermap.com/t5ss/allegiances'
+            $this->dataUrl2 . 'allegiances'
         );
         return $this->serializer->decode(
             $data,
@@ -52,7 +55,7 @@ class TravellerMapApi
 
     public function getSophonts() : array {
       $data = $this->fetch(
-            'https://travellermap.com/t5ss/sophonts'
+            $this->dataUrl2 . 'sophonts'
         );
 
         return $this->serializer->decode(
@@ -63,11 +66,11 @@ class TravellerMapApi
 
     public function getSector($sector) : array {
       $data = $this->fetch(
-            'https://travellermap.com/data/' . $sector . '/metadata'
+            $this->apiUrl . 'metadata?sector=' . $sector
         );
         return $this->serializer->decode(
             $data,
-            'xml'
+            'json'
         );
     }
 
