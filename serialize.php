@@ -604,3 +604,5 @@ file_put_contents('json/remarks.json', json_encode($remarks, JSON_PRETTY_PRINT))
 // file_put_contents('json/sophonts_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/t5ss/sophonts')), JSON_PRETTY_PRINT));
 // file_put_contents('json/milieux_table.json', json_encode(json_decode(file_get_contents('https://travellermap.com/api/milieux')), JSON_PRETTY_PRINT));
 
+//    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arsenal">
+
