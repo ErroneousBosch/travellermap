@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230824191324 extends AbstractMigration
+final class Version20230826160907 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -34,7 +34,11 @@ final class Version20230824191324 extends AbstractMigration
         , subsectors CLOB DEFAULT NULL --(DC2Type:json)
         , borders CLOB DEFAULT NULL --(DC2Type:json)
         , routes CLOB DEFAULT NULL --(DC2Type:json)
-        , uniqid VARCHAR(255) NOT NULL, milieu VARCHAR(32) NOT NULL, tags VARCHAR(32) DEFAULT NULL)');
+        , uniqid VARCHAR(255) NOT NULL, milieu VARCHAR(32) NOT NULL, tags VARCHAR(32) DEFAULT NULL, regions CLOB DEFAULT NULL --(DC2Type:json)
+        )');
+        $this->addSql('CREATE TABLE sector_metadata (sector_id INTEGER NOT NULL, metadata_id INTEGER NOT NULL, PRIMARY KEY(sector_id, metadata_id), CONSTRAINT FK_EAB40CECDE95C867 FOREIGN KEY (sector_id) REFERENCES sector (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE, CONSTRAINT FK_EAB40CECDC9EE959 FOREIGN KEY (metadata_id) REFERENCES metadata (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE)');
+        $this->addSql('CREATE INDEX IDX_EAB40CECDE95C867 ON sector_metadata (sector_id)');
+        $this->addSql('CREATE INDEX IDX_EAB40CECDC9EE959 ON sector_metadata (metadata_id)');
         $this->addSql('CREATE TABLE sophont (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR(255) NOT NULL, code VARCHAR(4) NOT NULL)');
         $this->addSql('CREATE TABLE sophont_sector (sophont_id INTEGER NOT NULL, sector_id INTEGER NOT NULL, PRIMARY KEY(sophont_id, sector_id), CONSTRAINT FK_13C06D0FCBDAD4C0 FOREIGN KEY (sophont_id) REFERENCES sophont (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE, CONSTRAINT FK_13C06D0FDE95C867 FOREIGN KEY (sector_id) REFERENCES sector (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE)');
         $this->addSql('CREATE INDEX IDX_13C06D0FCBDAD4C0 ON sophont_sector (sophont_id)');
@@ -55,6 +59,7 @@ final class Version20230824191324 extends AbstractMigration
         $this->addSql('DROP TABLE metadata');
         $this->addSql('DROP TABLE remark');
         $this->addSql('DROP TABLE sector');
+        $this->addSql('DROP TABLE sector_metadata');
         $this->addSql('DROP TABLE sophont');
         $this->addSql('DROP TABLE sophont_sector');
         $this->addSql('DROP TABLE world');

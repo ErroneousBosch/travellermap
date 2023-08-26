@@ -27,7 +27,7 @@ class Remark
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $extra_info = null;
 
-    #[ORM\ManyToMany(targetEntity: World::class, mappedBy: 'remarks')]
+    #[ORM\ManyToMany(targetEntity: World::class, mappedBy: 'remarks', cascade: ['persist'])]
     private Collection $worlds;
 
     #[ORM\ManyToOne(inversedBy: 'remarks')]

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MetadataRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MetadataRepository::class)]
@@ -27,6 +29,14 @@ class Metadata
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $name = null;
+
+    #[ORM\ManyToMany(targetEntity: Sector::class, mappedBy: 'metadata', cascade: ['persist'])]
+    private Collection $sectors;
+
+    public function __construct()
+    {
+        $this->sectors = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +99,33 @@ class Metadata
     public function setName(?string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sector>
+     */
+    public function getSectors(): Collection
+    {
+        return $this->sectors;
+    }
+
+    public function addSector(Sector $sector): static
+    {
+        if (!$this->sectors->contains($sector)) {
+            $this->sectors->add($sector);
+            $sector->addMetadata($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSector(Sector $sector): static
+    {
+        if ($this->sectors->removeElement($sector)) {
+            $sector->removeMetadata($this);
+        }
 
         return $this;
     }

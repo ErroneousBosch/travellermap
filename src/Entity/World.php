@@ -115,13 +115,13 @@ class World
     #[ORM\Column(nullable: true)]
     private ?int $ru = null;
 
-    #[ORM\ManyToMany(targetEntity: Remark::class, inversedBy: 'worlds')]
+    #[ORM\ManyToMany(targetEntity: Remark::class, inversedBy: 'worlds', cascade: ['persist'])]
     private Collection $remarks;
 
     #[ORM\Column(length: 255)]
     private ?string $uniqid = null;
 
-    #[ORM\OneToMany(mappedBy: 'control', targetEntity: Remark::class)]
+    #[ORM\OneToMany(mappedBy: 'control', targetEntity: Remark::class, cascade: ['persist'])]
     private Collection $controlled;
 
     #[ORM\Column(length: 32, nullable: true)]

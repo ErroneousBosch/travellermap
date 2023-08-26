@@ -21,10 +21,10 @@ class Sophont
     #[ORM\Column(length: 4)]
     private ?string $code = null;
 
-    #[ORM\ManyToMany(targetEntity: Sector::class, inversedBy: 'sophonts')]
+    #[ORM\ManyToMany(targetEntity: Sector::class, inversedBy: 'sophonts', cascade: ['persist'])]
     private Collection $location;
 
-    #[ORM\OneToMany(mappedBy: 'sophonts', targetEntity: Remark::class)]
+    #[ORM\OneToMany(mappedBy: 'sophonts', targetEntity: Remark::class, cascade: ['persist'])]
     private Collection $remarks;
 
     public function __construct()

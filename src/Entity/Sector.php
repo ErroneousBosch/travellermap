@@ -39,13 +39,13 @@ class Sector
     #[ORM\Column(nullable: true)]
     private ?array $routes = null;
 
-    #[ORM\OneToMany(mappedBy: 'sector', targetEntity: World::class)]
+    #[ORM\OneToMany(mappedBy: 'sector', targetEntity: World::class, cascade: ['persist'])]
     private Collection $worlds;
 
-    #[ORM\ManyToMany(targetEntity: Sophont::class, mappedBy: 'location')]
+    #[ORM\ManyToMany(targetEntity: Sophont::class, mappedBy: 'location', cascade: ['persist'])]
     private Collection $sophonts;
 
-    #[ORM\ManyToMany(targetEntity: Allegiance::class, mappedBy: 'location')]
+    #[ORM\ManyToMany(targetEntity: Allegiance::class, mappedBy: 'location', cascade: ['persist'])]
     private Collection $allegiances;
 
     #[ORM\Column(length: 255)]
@@ -57,11 +57,18 @@ class Sector
     #[ORM\Column(length: 32, nullable: true)]
     private ?string $tags = null;
 
+    #[ORM\ManyToMany(targetEntity: Metadata::class, inversedBy: 'sectors', cascade: ['persist'])]
+    private Collection $metadata;
+
+    #[ORM\Column(nullable: true)]
+    private ?array $regions = null;
+
     public function __construct()
     {
         $this->worlds = new ArrayCollection();
         $this->sophonts = new ArrayCollection();
         $this->allegiances = new ArrayCollection();
+        $this->metadata = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -281,6 +288,42 @@ class Sector
     public function setTags(?string $tags): static
     {
         $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Metadata>
+     */
+    public function getMetadata(): Collection
+    {
+        return $this->metadata;
+    }
+
+    public function addMetadata(Metadata $metadata): static
+    {
+        if (!$this->metadata->contains($metadata)) {
+            $this->metadata->add($metadata);
+        }
+
+        return $this;
+    }
+
+    public function removeMetadata(Metadata $metadata): static
+    {
+        $this->metadata->removeElement($metadata);
+
+        return $this;
+    }
+
+    public function getRegions(): ?array
+    {
+        return $this->regions;
+    }
+
+    public function setRegions(?array $regions): static
+    {
+        $this->regions = $regions;
 
         return $this;
     }
