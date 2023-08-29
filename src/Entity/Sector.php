@@ -31,9 +31,6 @@ class Sector
     private array $names = [];
 
     #[ORM\Column(nullable: true)]
-    private ?array $subsectors = null;
-
-    #[ORM\Column(nullable: true)]
     private ?array $borders = null;
 
     #[ORM\Column(nullable: true)]
@@ -54,14 +51,14 @@ class Sector
     #[ORM\Column(length: 32)]
     private ?string $milieu = null;
 
-    #[ORM\Column(length: 32, nullable: true)]
-    private ?string $tags = null;
-
     #[ORM\ManyToMany(targetEntity: Metadata::class, inversedBy: 'sectors', cascade: ['persist'])]
     private Collection $metadata;
 
     #[ORM\Column(nullable: true)]
     private ?array $regions = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?array $subsectors = null;
 
     public function __construct()
     {
@@ -128,22 +125,9 @@ class Sector
     {
         return $this->names;
     }
-
     public function setNames(array $names): static
     {
         $this->names = $names;
-
-        return $this;
-    }
-
-    public function getSubsectors(): ?array
-    {
-        return $this->subsectors;
-    }
-
-    public function setSubsectors(?array $subsectors): static
-    {
-        $this->subsectors = $subsectors;
 
         return $this;
     }
@@ -280,18 +264,6 @@ class Sector
         return $this;
     }
 
-    public function getTags(): ?string
-    {
-        return $this->tags;
-    }
-
-    public function setTags(?string $tags): static
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Metadata>
      */
@@ -324,6 +296,18 @@ class Sector
     public function setRegions(?array $regions): static
     {
         $this->regions = $regions;
+
+        return $this;
+    }
+
+    public function getSubsectors(): ?array
+    {
+        return $this->subsectors;
+    }
+
+    public function setSubsectors(?array $subsectors): static
+    {
+        $this->subsectors = $subsectors;
 
         return $this;
     }

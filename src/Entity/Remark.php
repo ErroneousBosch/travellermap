@@ -36,7 +36,7 @@ class Remark
     #[ORM\ManyToOne(inversedBy: 'remarks')]
     private ?Allegiance $allegiance = null;
 
-    #[ORM\ManyToOne(inversedBy: 'controlled')]
+    #[ORM\ManyToOne(inversedBy: 'controls')]
     private ?World $control = null;
 
     public function __construct()

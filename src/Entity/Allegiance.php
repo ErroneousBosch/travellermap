@@ -30,10 +30,14 @@ class Allegiance
     #[ORM\OneToMany(mappedBy: 'allegiance', targetEntity: Remark::class)]
     private Collection $remarks;
 
+    #[ORM\OneToMany(mappedBy: 'allegiance', targetEntity: World::class)]
+    private Collection $worlds;
+
     public function __construct()
     {
         $this->location = new ArrayCollection();
         $this->remarks = new ArrayCollection();
+        $this->worlds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -130,4 +134,36 @@ class Allegiance
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, World>
+     */
+    public function getWorlds(): Collection
+    {
+        return $this->worlds;
+    }
+
+    public function addWorld(World $world): static
+    {
+        if (!$this->worlds->contains($world)) {
+            $this->worlds->add($world);
+            $world->setAllegiance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorld(World $world): static
+    {
+        if ($this->worlds->removeElement($world)) {
+            // set the owning side to null (unless already changed)
+            if ($world->getAllegiance() === $this) {
+                $world->setAllegiance(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }

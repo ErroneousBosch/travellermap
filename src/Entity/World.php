@@ -106,9 +106,6 @@ class World
     #[ORM\Column]
     private ?int $bodies = null;
 
-    #[ORM\Column(length: 4, nullable: true)]
-    private ?string $allegiance = null;
-
     #[ORM\Column]
     private array $stellar_data = [];
 
@@ -122,15 +119,21 @@ class World
     private ?string $uniqid = null;
 
     #[ORM\OneToMany(mappedBy: 'control', targetEntity: Remark::class, cascade: ['persist'])]
-    private Collection $controlled;
+    private Collection $controls;
 
     #[ORM\Column(length: 32, nullable: true)]
     private ?string $milieu = null;
 
+    #[ORM\Column(length: 1, nullable: true)]
+    private ?string $subsector = null;
+
+    #[ORM\ManyToOne(inversedBy: 'worlds')]
+    private ?Allegiance $allegiance = null;
+
     public function __construct()
     {
         $this->remarks = new ArrayCollection();
-        $this->controlled = new ArrayCollection();
+        $this->controls = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,6 +173,14 @@ class World
     public function setUWP(?string $UWP): static
     {
         $this->UWP = $UWP;
+        $this->setStarportClass(substr($UWP, 0, 1));
+        $this->setSize(substr($UWP, 1, 1));
+        $this->setAtmosphere(substr($UWP, 2, 1));
+        $this->setHydrographics(substr($UWP, 3, 1));
+        $this->setPopulationExponent(substr($UWP, 4, 1));
+        $this->setGovernment(substr($UWP, 5, 1));
+        $this->setLawLevel(substr($UWP, 6, 1));
+        $this->setTechLevel(substr($UWP, 8, 1));
 
         return $this;
     }
@@ -290,6 +301,9 @@ class World
     public function setEconomy(?string $economy): static
     {
         $this->economy = $economy;
+        $this->setResources(substr($economy, 0, 1));
+        $this->setLabor(substr($economy, 1, 1));
+        $this->setInfrastructure(substr($economy, 2, 1));
 
         return $this;
     }
@@ -350,6 +364,10 @@ class World
     public function setCulture(?string $culture): static
     {
         $this->culture = $culture;
+        $this->setHeterogeneity(substr($culture, 0, 1));
+        $this->setAcceptance(substr($culture, 1, 1));
+        $this->setStrangeness(substr($culture, 2, 1));
+        $this->setSymbols(substr($culture, 3, 1));
 
         return $this;
     }
@@ -446,6 +464,9 @@ class World
     public function setPBG(string $pbg): static
     {
         $this->pbg = $pbg;
+        $this->setPopulationMultiplier(substr($pbg, 0, 1));
+        $this->setBelts(substr($pbg, 1, 1));
+        $this->setGasGiants(substr($pbg, 2, 1));
 
         return $this;
     }
@@ -494,18 +515,6 @@ class World
     public function setBodies(?int $bodies): static
     {
         $this->bodies = $bodies;
-
-        return $this;
-    }
-
-    public function getAllegiance(): ?string
-    {
-        return $this->allegiance;
-    }
-
-    public function setAllegiance(?string $allegiance): static
-    {
-        $this->allegiance = $allegiance;
 
         return $this;
     }
@@ -573,27 +582,27 @@ class World
     /**
      * @return Collection<int, Remark>
      */
-    public function getControlled(): Collection
+    public function getcontrols(): Collection
     {
-        return $this->controlled;
+        return $this->controls;
     }
 
-    public function addControlled(Remark $controlled): static
+    public function addcontrols(Remark $controls): static
     {
-        if (!$this->controlled->contains($controlled)) {
-            $this->controlled->add($controlled);
-            $controlled->setControl($this);
+        if (!$this->controls->contains($controls)) {
+            $this->controls->add($controls);
+            $controls->setControl($this);
         }
 
         return $this;
     }
 
-    public function removeControlled(Remark $controlled): static
+    public function removecontrols(Remark $controls): static
     {
-        if ($this->controlled->removeElement($controlled)) {
+        if ($this->controls->removeElement($controls)) {
             // set the owning side to null (unless already changed)
-            if ($controlled->getControl() === $this) {
-                $controlled->setControl(null);
+            if ($controls->getControl() === $this) {
+                $controls->setControl(null);
             }
         }
 
@@ -608,6 +617,30 @@ class World
     public function setMilieu(?string $milieu): static
     {
         $this->milieu = $milieu;
+
+        return $this;
+    }
+
+    public function getSubsector(): ?string
+    {
+        return $this->subsector;
+    }
+
+    public function setSubsector(?string $subsector): static
+    {
+        $this->subsector = $subsector;
+
+        return $this;
+    }
+
+    public function getAllegiance(): ?Allegiance
+    {
+        return $this->allegiance;
+    }
+
+    public function setAllegiance(?Allegiance $allegiance): static
+    {
+        $this->allegiance = $allegiance;
 
         return $this;
     }
