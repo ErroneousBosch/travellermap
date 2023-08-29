@@ -76,7 +76,7 @@ class TravellerMapApi
 
     public function getWorlds($sector) : array {
       $data = $this->fetch(
-            'https://travellermap.com/data/' . $sector . '/tab'
+        $this->apiUrl . 'sec?sector=' . $sector . '&type=TabDelimited'
         );
 
         return $this->serializer->decode(
@@ -88,7 +88,7 @@ class TravellerMapApi
 
     public function getUniverse() : array {
         $data = $this->fetch(
-            'https://travellermap.com/data'
+            $this->apiUrl . 'universe'
         );
 
         return $this->serializer->decode(
