@@ -59,6 +59,7 @@ class TravellermapPopulateCommand extends Command
             ->addOption('sector', 's', InputOption::VALUE_REQUIRED, 'Populate sector metadata for known sectors')
             ->addOption('worlds', 'w', InputOption::VALUE_REQUIRED, 'Populate worlds for known sectors')
             ->addOption('metadata', 'm', InputOption::VALUE_NONE, 'Populate metadata tables')
+            ->addOption('testapi', 't', InputOption::VALUE_NONE, 'Test the API')
         ;
     }
 
@@ -78,7 +79,10 @@ class TravellermapPopulateCommand extends Command
         } elseif ($sector = $input->getOption('worlds')) {
             $this->io->writeln('Populating worlds in sector ' . $sector);
             // var_dump($this->travellerMapApi->getWorlds($sector));
-        } 
+        } elseif ($sector = $input->getOption('testapi')) {
+            $this->io->writeln('Testing API');
+            var_dump($this->travellerMapApi->getUniverse());
+        }
         // else {
         //     $this->io->writeln('Listing all sectors');
         //     // var_dump($this->travellerMapApi->getUniverse());
