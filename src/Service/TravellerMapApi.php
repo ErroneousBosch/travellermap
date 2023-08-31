@@ -3,7 +3,8 @@
 namespace App\Service;
 
 use App\Kernel;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpClient\RetryableHttpClient;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
@@ -17,9 +18,9 @@ class TravellerMapApi
     private string $dataUrl = 'https://travellermap.com/data/';
     private string $dataUrl2 = 'https://travellermap.com/t5ss/';
     private string $apiUrl = 'https://travellermap.com/api/';
+    private RetryableHttpClient $client;
  
     public function __construct(
-        private HttpClientInterface $client,
         private Kernel $kernel,
         )
     {
@@ -27,72 +28,64 @@ class TravellerMapApi
             [new ObjectNormalizer()],
             [new XmlEncoder(), new JsonEncoder(), new CsvEncoder()]
         );
+        $this->client = new RetryableHttpClient(HttpClient::create(), NULL, 5);
     }
-    private function fetch($url) : string|NULL{
-        $retry = 0;
-        do {
-          $data = $this->client->request(
-              'GET',
-              $url
-          );
-          if (($data->getStatusCode() ?? 200) != 200) {
-            sleep(1);
-            $retry++;
-          }
-        } while ($data->getStatusCode() != 200 && $retry < 5);
-        return $data->getContent() ?? NULL;
-      }
 
     public function getAllegiances() : array {
-      $data = $this->fetch(
+      $data = $this->client->request(
+              'GET',
             $this->dataUrl2 . 'allegiances'
         );
         return $this->serializer->decode(
-            $data,
+            $data->getContent(),
             'json'
         );
     }
 
     public function getSophonts() : array {
-      $data = $this->fetch(
+      $data = $this->client->request(
+              'GET',
             $this->dataUrl2 . 'sophonts'
         );
 
         return $this->serializer->decode(
-            $data,
+            $data->getContent(),
             'json'
         );
     }
 
     public function getSector($sector) : array {
-      $data = $this->fetch(
+      $data = $this->client->request(
+              'GET',
             $this->apiUrl . 'metadata?sector=' . $sector
         );
         return $this->serializer->decode(
-            $data,
+            $data->getContent(),
             'json'
         );
     }
 
     public function getWorlds($sector) : array {
-      $data = $this->fetch(
+      $data = $this->client->request(
+              'GET',
         $this->apiUrl . 'sec?sector=' . $sector . '&type=TabDelimited'
         );
 
         return $this->serializer->decode(
-            $data,
+            $data->getContent(),
             'csv',
             [CsvEncoder::DELIMITER_KEY => "\t"]
         );
     }       
 
     public function getUniverse() : array {
-        $data = $this->fetch(
+        $data = $this->client->request(
+              'GET',
             $this->apiUrl . 'universe'
         );
 
         return $this->serializer->decode(
-            $data,
+            $data->getContent(),
             'json'
         );
     }
