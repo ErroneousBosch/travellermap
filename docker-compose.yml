@@ -1,8 +1,7 @@
 version: "3.8"
 services:
   travellermap:
-    build: 
-      context: .
+    image: ghcr.io/erroneousbosch/symfony-base:latest
     container_name: travellermap
     volumes:
       - ./:/app
