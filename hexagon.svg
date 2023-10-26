@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 2000">
+  <style>
+    .hex {
+      stroke: white;
+      stroke-width: 1px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+  <defs>
+    <!-- Ratios
+      x: x
+      side: 2x
+      y: x radical 3
+     -->
+    <!-- standalone half hex (lower) 
+    <path id="halfhex" class="hex" fill="none" d="M0,0 L58,100 L175,100 L233,0 Z" />
+    -->
+    <!-- Standalone Hex 
+    <path id="hex" class="hex" fill="none" d="M0,100 L58,200 L175,200 L233,100 M0,100 L58,0 L175,0 L233,100 L Z" />
+    -->
+    <!-- Pattern for background, offset is for sector mapping -->
+    <pattern id="hexgrid" x="-29" y="-100" width="350" height="200" patternUnits="userSpaceOnUse">
+      <path id="hex2" class="hex" fill="none" d="M0,0 L58,100 L175,100 L232,0 L350,0 M0,200 L58,100 M175,100 L232,200 L350,200" />
+    </pattern>
+    <pattern id="hexgrid2" x="-29" y="-100" width="233" height="200" patternUnits="userSpaceOnUse">
+      <use href="#hex"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#hexgrid)"/>
+  <!-- halfway vars
+    x: 87.5
+   -->
+</svg>
