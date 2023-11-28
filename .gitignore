@@ -9,3 +9,7 @@
 /vendor/
 /DEVSENSE/
 ###< symfony/framework-bundle ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+###< symfony/asset-mapper ###
