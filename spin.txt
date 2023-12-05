@@ -1,0 +1,1577 @@
+Populating sector spin
+array(16) {
+  ["@xmlns:xsd"]=>
+  string(32) "http://www.w3.org/2001/XMLSchema"
+  ["@xmlns:xsi"]=>
+  string(41) "http://www.w3.org/2001/XMLSchema-instance"
+  ["@Selected"]=>
+  string(4) "true"
+  ["@Tags"]=>
+  string(12) "Official OTU"
+  ["@Abbreviation"]=>
+  string(4) "Spin"
+  ["Name"]=>
+  array(2) {
+    [0]=>
+    string(16) "Spinward Marches"
+    [1]=>
+    array(2) {
+      ["@Lang"]=>
+      string(2) "zh"
+      ["#"]=>
+      string(5) "Tloql"
+    }
+  }
+  ["Credits"]=>
+  string(191) "
+
+             <b>The Spinward Marches</b> were designed by Marc W.
+             Miller and appear in <cite>Traveller Supplement 3: The
+             Spinward Marches</cite> (GDW, 1979).
+
+    "
+  ["X"]=>
+  string(2) "-4"
+  ["Y"]=>
+  string(2) "-1"
+  ["Product"]=>
+  array(5) {
+    ["@Author"]=>
+    string(19) "Martin J. Dougherty"
+    ["@Title"]=>
+    string(15) "Behind the Claw"
+    ["@Publisher"]=>
+    string(19) "Mongoose Publishing"
+    ["@Ref"]=>
+    string(61) "https://www.mongoosepublishing.com/products/behind-the-claw-2"
+    ["#"]=>
+    string(0) ""
+  }
+  ["DataFile"]=>
+  array(3) {
+    ["@Source"]=>
+    string(25) "Traveller 5 Second Survey"
+    ["@Milieu"]=>
+    string(5) "M1105"
+    ["#"]=>
+    string(0) ""
+  }
+  ["Subsectors"]=>
+  array(1) {
+    ["Subsector"]=>
+    array(16) {
+      [0]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "A"
+        ["#"]=>
+        string(6) "Cronor"
+      }
+      [1]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "B"
+        ["#"]=>
+        string(6) "Jewell"
+      }
+      [2]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "C"
+        ["#"]=>
+        string(6) "Regina"
+      }
+      [3]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "D"
+        ["#"]=>
+        string(6) "Aramis"
+      }
+      [4]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "E"
+        ["#"]=>
+        string(7) "Querion"
+      }
+      [5]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "F"
+        ["#"]=>
+        string(5) "Vilis"
+      }
+      [6]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "G"
+        ["#"]=>
+        string(5) "Lanth"
+      }
+      [7]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "H"
+        ["#"]=>
+        string(8) "Rhylanor"
+      }
+      [8]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "I"
+        ["#"]=>
+        string(7) "Darrian"
+      }
+      [9]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "J"
+        ["#"]=>
+        string(12) "Sword Worlds"
+      }
+      [10]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "K"
+        ["#"]=>
+        string(6) "Lunion"
+      }
+      [11]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "L"
+        ["#"]=>
+        string(4) "Mora"
+      }
+      [12]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "M"
+        ["#"]=>
+        string(12) "Five Sisters"
+      }
+      [13]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "N"
+        ["#"]=>
+        string(12) "District 268"
+      }
+      [14]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "O"
+        ["#"]=>
+        string(7) "Glisten"
+      }
+      [15]=>
+      array(2) {
+        ["@Index"]=>
+        string(1) "P"
+        ["#"]=>
+        string(11) "Trin's Veil"
+      }
+    }
+  }
+  ["Allegiances"]=>
+  array(1) {
+    ["Allegiance"]=>
+    array(8) {
+      [0]=>
+      array(3) {
+        ["@Code"]=>
+        string(4) "ZhIN"
+        ["@Base"]=>
+        string(2) "Zh"
+        ["#"]=>
+        string(38) "Zhodani Consulate, Iadr Nsobl Province"
+      }
+      [1]=>
+      array(3) {
+        ["@Code"]=>
+        string(4) "NaHu"
+        ["@Base"]=>
+        string(2) "Na"
+        ["#"]=>
+        string(28) "Non-Aligned, Human-dominated"
+      }
+      [2]=>
+      array(3) {
+        ["@Code"]=>
+        string(4) "ImDd"
+        ["@Base"]=>
+        string(2) "Im"
+        ["#"]=>
+        string(31) "Third Imperium, Domain of Deneb"
+      }
+      [3]=>
+      array(2) {
+        ["@Code"]=>
+        string(4) "CsZh"
+        ["#"]=>
+        string(31) "Client state, Zhodani Consulate"
+      }
+      [4]=>
+      array(2) {
+        ["@Code"]=>
+        string(4) "DaCf"
+        ["#"]=>
+        string(21) "Darrian Confederation"
+      }
+      [5]=>
+      array(3) {
+        ["@Code"]=>
+        string(4) "NaXX"
+        ["@Base"]=>
+        string(2) "Na"
+        ["#"]=>
+        string(22) "Non-Aligned, unclaimed"
+      }
+      [6]=>
+      array(2) {
+        ["@Code"]=>
+        string(4) "CsIm"
+        ["#"]=>
+        string(28) "Client state, Third Imperium"
+      }
+      [7]=>
+      array(2) {
+        ["@Code"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(26) "Sword Worlds Confederation"
+      }
+    }
+  }
+  ["Stylesheet"]=>
+  string(148) "
+    border.DaCf { color: lightblue; }
+    route.DaCf { color: lightgreen; }
+
+    border.SwCf { color: blue; }
+    route.SwCf { color: #006600; }
+  "
+  ["Borders"]=>
+  array(1) {
+    ["Border"]=>
+    array(7) {
+      [0]=>
+      array(4) {
+        ["@WrapLabel"]=>
+        string(4) "true"
+        ["@Allegiance"]=>
+        string(4) "DaCf"
+        ["@LabelPosition"]=>
+        string(4) "0423"
+        ["#"]=>
+        string(114) "0223 0323 0422 0421 0522 0621 0721 0821 0822 0723 0724 0725 0726 0727 0728 0627 0527 0427 0426 0326 0325 0224 0223"
+      }
+      [1]=>
+      array(4) {
+        ["@WrapLabel"]=>
+        string(4) "true"
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["@LabelPosition"]=>
+        int(1327)
+        ["#"]=>
+        string(189) "0620 0720 0820 0921 1021 1121 1221 1322 1421 1522 1523 1524 1525 1526 1626 1627 1628 1529 1528 1427 1327 1227 1128 1129 1130 1129 1028 0928 0927 0926 0925 0924 0923 0922 0921 0820 0720 0620"
+      }
+      [2]=>
+      array(5) {
+        ["@WrapLabel"]=>
+        string(4) "true"
+        ["@Allegiance"]=>
+        string(4) "ZhIN"
+        ["@LabelPosition"]=>
+        string(4) "0205"
+        ["@Label"]=>
+        string(17) "Zhodani Consulate"
+        ["#"]=>
+        string(299) "0000 0100 0200 0101 0102 0202 0303 0403 0504 0604 0705 0804 0904 1003 1103 1102 1201 1302 1401 1402 1303 1202 1103 1003 0904 0804 0705 0604 0505 0506 0507 0508 0608 0609 0610 0611 0712 0612 0613 0614 0514 0413 0412 0512 0511 0610 0609 0608 0508 0407 0307 0206 0106 0006 0005 0004 0003 0002 0001 0000"
+      }
+      [3]=>
+      array(4) {
+        ["@Allegiance"]=>
+        string(4) "ImDd"
+        ["@LabelPosition"]=>
+        int(2021)
+        ["@Label"]=>
+        string(14) "Third Imperium"
+        ["#"]=>
+        string(689) "1005 1105 1204 1305 1405 1505 1604 1704 1803 1802 1903 2002 2102 2201 2302 2402 2502 2601 2701 2801 2902 3001 3102 3201 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1840 1839 1739 1738 1637 1537 1636 1736 1835 1834 1833 1733 1832 1831 1731 1730 1729 1728 1727 1826 1825 1824 1823 1822 1821 1721 1620 1520 1419 1320 1219 1119 1019 1020 1019 1018 1118 1117 1116 1215 1214 1314 1313 1412 1512 1611 1711 1810 1910 1909 1808 1708 1607 1507 1407 1307 1207 1107 1006 1005"
+      }
+      [4]=>
+      array(5) {
+        ["@ShowLabel"]=>
+        string(5) "false"
+        ["@Allegiance"]=>
+        string(4) "ImDd"
+        ["@LabelPosition"]=>
+        int(1430)
+        ["@Label"]=>
+        string(14) "Third Imperium"
+        ["#"]=>
+        string(24) "1329 1429 1430 1330 1329"
+      }
+      [5]=>
+      array(4) {
+        ["@Allegiance"]=>
+        string(4) "ImDd"
+        ["@LabelPosition"]=>
+        string(4) "0335"
+        ["@Label"]=>
+        string(14) "Third Imperium"
+        ["#"]=>
+        string(134) "0133 0232 0332 0432 0533 0632 0732 0733 0633 0534 0535 0635 0636 0737 0738 0638 0539 0438 0339 0238 0139 0138 0137 0136 0135 0134 0133"
+      }
+      [6]=>
+      array(5) {
+        ["@ShowLabel"]=>
+        string(5) "false"
+        ["@Allegiance"]=>
+        string(4) "ImDd"
+        ["@LabelPosition"]=>
+        string(4) "0930"
+        ["@Label"]=>
+        string(14) "Third Imperium"
+        ["#"]=>
+        string(4) "0930"
+      }
+    }
+  }
+  ["Routes"]=>
+  array(1) {
+    ["Route"]=>
+    array(127) {
+      [0]=>
+      array(3) {
+        ["@Start"]=>
+        int(1106)
+        ["@End"]=>
+        int(1006)
+        ["#"]=>
+        string(0) ""
+      }
+      [1]=>
+      array(3) {
+        ["@Start"]=>
+        int(1106)
+        ["@End"]=>
+        int(1005)
+        ["#"]=>
+        string(0) ""
+      }
+      [2]=>
+      array(3) {
+        ["@Start"]=>
+        int(1106)
+        ["@End"]=>
+        int(1204)
+        ["#"]=>
+        string(0) ""
+      }
+      [3]=>
+      array(3) {
+        ["@Start"]=>
+        int(1106)
+        ["@End"]=>
+        int(1307)
+        ["#"]=>
+        string(0) ""
+      }
+      [4]=>
+      array(3) {
+        ["@Start"]=>
+        int(1307)
+        ["@End"]=>
+        int(1705)
+        ["#"]=>
+        string(0) ""
+      }
+      [5]=>
+      array(3) {
+        ["@Start"]=>
+        int(1826)
+        ["@End"]=>
+        int(2228)
+        ["#"]=>
+        string(0) ""
+      }
+      [6]=>
+      array(3) {
+        ["@Start"]=>
+        int(1705)
+        ["@End"]=>
+        int(1904)
+        ["#"]=>
+        string(0) ""
+      }
+      [7]=>
+      array(3) {
+        ["@Start"]=>
+        int(1904)
+        ["@End"]=>
+        int(1903)
+        ["#"]=>
+        string(0) ""
+      }
+      [8]=>
+      array(3) {
+        ["@Start"]=>
+        int(1903)
+        ["@End"]=>
+        int(2202)
+        ["#"]=>
+        string(0) ""
+      }
+      [9]=>
+      array(3) {
+        ["@Start"]=>
+        int(1904)
+        ["@End"]=>
+        int(2005)
+        ["#"]=>
+        string(0) ""
+      }
+      [10]=>
+      array(3) {
+        ["@Start"]=>
+        int(2005)
+        ["@End"]=>
+        int(2007)
+        ["#"]=>
+        string(0) ""
+      }
+      [11]=>
+      array(3) {
+        ["@Start"]=>
+        int(2007)
+        ["@End"]=>
+        int(1910)
+        ["#"]=>
+        string(0) ""
+      }
+      [12]=>
+      array(3) {
+        ["@Start"]=>
+        int(1910)
+        ["@End"]=>
+        int(1810)
+        ["#"]=>
+        string(0) ""
+      }
+      [13]=>
+      array(3) {
+        ["@Start"]=>
+        int(1810)
+        ["@End"]=>
+        int(1711)
+        ["#"]=>
+        string(0) ""
+      }
+      [14]=>
+      array(3) {
+        ["@Start"]=>
+        int(1711)
+        ["@End"]=>
+        int(1413)
+        ["#"]=>
+        string(0) ""
+      }
+      [15]=>
+      array(3) {
+        ["@Start"]=>
+        int(1413)
+        ["@End"]=>
+        int(1116)
+        ["#"]=>
+        string(0) ""
+      }
+      [16]=>
+      array(3) {
+        ["@Start"]=>
+        int(1116)
+        ["@End"]=>
+        int(1118)
+        ["#"]=>
+        string(0) ""
+      }
+      [17]=>
+      array(3) {
+        ["@Start"]=>
+        int(1910)
+        ["@End"]=>
+        int(1912)
+        ["#"]=>
+        string(0) ""
+      }
+      [18]=>
+      array(3) {
+        ["@Start"]=>
+        int(1912)
+        ["@End"]=>
+        int(1815)
+        ["#"]=>
+        string(0) ""
+      }
+      [19]=>
+      array(3) {
+        ["@Start"]=>
+        int(1815)
+        ["@End"]=>
+        int(1719)
+        ["#"]=>
+        string(0) ""
+      }
+      [20]=>
+      array(3) {
+        ["@Start"]=>
+        int(1719)
+        ["@End"]=>
+        int(1920)
+        ["#"]=>
+        string(0) ""
+      }
+      [21]=>
+      array(3) {
+        ["@Start"]=>
+        int(1920)
+        ["@End"]=>
+        int(2319)
+        ["#"]=>
+        string(0) ""
+      }
+      [22]=>
+      array(3) {
+        ["@Start"]=>
+        int(2319)
+        ["@End"]=>
+        int(2417)
+        ["#"]=>
+        string(0) ""
+      }
+      [23]=>
+      array(3) {
+        ["@Start"]=>
+        int(2417)
+        ["@End"]=>
+        int(2716)
+        ["#"]=>
+        string(0) ""
+      }
+      [24]=>
+      array(3) {
+        ["@Start"]=>
+        int(2716)
+        ["@End"]=>
+        int(2814)
+        ["#"]=>
+        string(0) ""
+      }
+      [25]=>
+      array(3) {
+        ["@Start"]=>
+        int(2814)
+        ["@End"]=>
+        int(2712)
+        ["#"]=>
+        string(0) ""
+      }
+      [26]=>
+      array(3) {
+        ["@Start"]=>
+        int(2712)
+        ["@End"]=>
+        int(2510)
+        ["#"]=>
+        string(0) ""
+      }
+      [27]=>
+      array(3) {
+        ["@Start"]=>
+        int(2510)
+        ["@End"]=>
+        int(2410)
+        ["#"]=>
+        string(0) ""
+      }
+      [28]=>
+      array(3) {
+        ["@Start"]=>
+        int(2814)
+        ["@End"]=>
+        int(2913)
+        ["#"]=>
+        string(0) ""
+      }
+      [29]=>
+      array(3) {
+        ["@Start"]=>
+        int(2913)
+        ["@End"]=>
+        int(3010)
+        ["#"]=>
+        string(0) ""
+      }
+      [30]=>
+      array(3) {
+        ["@Start"]=>
+        int(3010)
+        ["@End"]=>
+        int(3110)
+        ["#"]=>
+        string(0) ""
+      }
+      [31]=>
+      array(3) {
+        ["@Start"]=>
+        int(3110)
+        ["@End"]=>
+        int(3209)
+        ["#"]=>
+        string(0) ""
+      }
+      [32]=>
+      array(4) {
+        ["@Start"]=>
+        int(3209)
+        ["@End"]=>
+        string(4) "0208"
+        ["@EndOffsetX"]=>
+        int(1)
+        ["#"]=>
+        string(0) ""
+      }
+      [33]=>
+      array(3) {
+        ["@Start"]=>
+        int(2913)
+        ["@End"]=>
+        int(3212)
+        ["#"]=>
+        string(0) ""
+      }
+      [34]=>
+      array(4) {
+        ["@Start"]=>
+        int(3212)
+        ["@End"]=>
+        string(4) "0311"
+        ["@EndOffsetX"]=>
+        int(1)
+        ["#"]=>
+        string(0) ""
+      }
+      [35]=>
+      array(3) {
+        ["@Start"]=>
+        int(2319)
+        ["@End"]=>
+        int(2418)
+        ["#"]=>
+        string(0) ""
+      }
+      [36]=>
+      array(3) {
+        ["@Start"]=>
+        int(2418)
+        ["@End"]=>
+        int(2621)
+        ["#"]=>
+        string(0) ""
+      }
+      [37]=>
+      array(3) {
+        ["@Start"]=>
+        int(2621)
+        ["@End"]=>
+        int(2323)
+        ["#"]=>
+        string(0) ""
+      }
+      [38]=>
+      array(3) {
+        ["@Start"]=>
+        int(2323)
+        ["@End"]=>
+        int(2124)
+        ["#"]=>
+        string(0) ""
+      }
+      [39]=>
+      array(3) {
+        ["@Start"]=>
+        int(2124)
+        ["@End"]=>
+        int(1824)
+        ["#"]=>
+        string(0) ""
+      }
+      [40]=>
+      array(3) {
+        ["@Start"]=>
+        int(1824)
+        ["@End"]=>
+        int(1526)
+        ["#"]=>
+        string(0) ""
+      }
+      [41]=>
+      array(4) {
+        ["@Start"]=>
+        int(1526)
+        ["@End"]=>
+        int(1525)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [42]=>
+      array(4) {
+        ["@Start"]=>
+        int(1525)
+        ["@End"]=>
+        int(1524)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [43]=>
+      array(4) {
+        ["@Start"]=>
+        int(1524)
+        ["@End"]=>
+        int(1523)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [44]=>
+      array(4) {
+        ["@Start"]=>
+        int(1523)
+        ["@End"]=>
+        int(1522)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [45]=>
+      array(4) {
+        ["@Start"]=>
+        int(1524)
+        ["@End"]=>
+        int(1424)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [46]=>
+      array(4) {
+        ["@Start"]=>
+        int(1424)
+        ["@End"]=>
+        int(1324)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [47]=>
+      array(4) {
+        ["@Start"]=>
+        int(1324)
+        ["@End"]=>
+        int(1223)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [48]=>
+      array(4) {
+        ["@Start"]=>
+        int(1223)
+        ["@End"]=>
+        int(1123)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [49]=>
+      array(4) {
+        ["@Start"]=>
+        int(1123)
+        ["@End"]=>
+        int(1022)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [50]=>
+      array(4) {
+        ["@Start"]=>
+        int(1022)
+        ["@End"]=>
+        string(4) "0922"
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [51]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0922"
+        ["@End"]=>
+        string(4) "0921"
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [52]=>
+      array(4) {
+        ["@Start"]=>
+        int(1424)
+        ["@End"]=>
+        int(1325)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [53]=>
+      array(4) {
+        ["@Start"]=>
+        int(1325)
+        ["@End"]=>
+        int(1225)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [54]=>
+      array(4) {
+        ["@Start"]=>
+        int(1225)
+        ["@End"]=>
+        int(1126)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [55]=>
+      array(4) {
+        ["@Start"]=>
+        int(1126)
+        ["@End"]=>
+        int(1026)
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [56]=>
+      array(4) {
+        ["@Start"]=>
+        int(1026)
+        ["@End"]=>
+        string(4) "0927"
+        ["@Allegiance"]=>
+        string(4) "SwCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [57]=>
+      array(3) {
+        ["@Start"]=>
+        int(1526)
+        ["@End"]=>
+        int(1329)
+        ["#"]=>
+        string(0) ""
+      }
+      [58]=>
+      array(3) {
+        ["@Start"]=>
+        int(1329)
+        ["@End"]=>
+        string(4) "0930"
+        ["#"]=>
+        string(0) ""
+      }
+      [59]=>
+      array(3) {
+        ["@Start"]=>
+        string(4) "0930"
+        ["@End"]=>
+        string(4) "0732"
+        ["#"]=>
+        string(0) ""
+      }
+      [60]=>
+      array(3) {
+        ["@Start"]=>
+        string(4) "0732"
+        ["@End"]=>
+        string(4) "0534"
+        ["#"]=>
+        string(0) ""
+      }
+      [61]=>
+      array(3) {
+        ["@Start"]=>
+        string(4) "0534"
+        ["@End"]=>
+        string(4) "0433"
+        ["#"]=>
+        string(0) ""
+      }
+      [62]=>
+      array(3) {
+        ["@Start"]=>
+        string(4) "0433"
+        ["@End"]=>
+        string(4) "0333"
+        ["#"]=>
+        string(0) ""
+      }
+      [63]=>
+      array(3) {
+        ["@Start"]=>
+        string(4) "0333"
+        ["@End"]=>
+        string(4) "0133"
+        ["#"]=>
+        string(0) ""
+      }
+      [64]=>
+      array(3) {
+        ["@Start"]=>
+        string(4) "0534"
+        ["@End"]=>
+        string(4) "0538"
+        ["#"]=>
+        string(0) ""
+      }
+      [65]=>
+      array(3) {
+        ["@Start"]=>
+        string(4) "0538"
+        ["@End"]=>
+        string(4) "0139"
+        ["#"]=>
+        string(0) ""
+      }
+      [66]=>
+      array(3) {
+        ["@Start"]=>
+        int(2124)
+        ["@End"]=>
+        int(2125)
+        ["#"]=>
+        string(0) ""
+      }
+      [67]=>
+      array(3) {
+        ["@Start"]=>
+        int(2125)
+        ["@End"]=>
+        int(1826)
+        ["#"]=>
+        string(0) ""
+      }
+      [68]=>
+      array(3) {
+        ["@Start"]=>
+        int(2125)
+        ["@End"]=>
+        int(2327)
+        ["#"]=>
+        string(0) ""
+      }
+      [69]=>
+      array(3) {
+        ["@Start"]=>
+        int(2327)
+        ["@End"]=>
+        int(2228)
+        ["#"]=>
+        string(0) ""
+      }
+      [70]=>
+      array(3) {
+        ["@Start"]=>
+        int(2228)
+        ["@End"]=>
+        int(2231)
+        ["#"]=>
+        string(0) ""
+      }
+      [71]=>
+      array(3) {
+        ["@Start"]=>
+        int(2231)
+        ["@End"]=>
+        int(2334)
+        ["#"]=>
+        string(0) ""
+      }
+      [72]=>
+      array(3) {
+        ["@Start"]=>
+        int(2334)
+        ["@End"]=>
+        int(2336)
+        ["#"]=>
+        string(0) ""
+      }
+      [73]=>
+      array(3) {
+        ["@Start"]=>
+        int(2336)
+        ["@End"]=>
+        int(2036)
+        ["#"]=>
+        string(0) ""
+      }
+      [74]=>
+      array(3) {
+        ["@Start"]=>
+        int(2036)
+        ["@End"]=>
+        int(1937)
+        ["#"]=>
+        string(0) ""
+      }
+      [75]=>
+      array(3) {
+        ["@Start"]=>
+        int(1937)
+        ["@End"]=>
+        int(1737)
+        ["#"]=>
+        string(0) ""
+      }
+      [76]=>
+      array(3) {
+        ["@Start"]=>
+        int(1737)
+        ["@End"]=>
+        int(1537)
+        ["#"]=>
+        string(0) ""
+      }
+      [77]=>
+      array(3) {
+        ["@Start"]=>
+        int(2036)
+        ["@End"]=>
+        int(1938)
+        ["#"]=>
+        string(0) ""
+      }
+      [78]=>
+      array(3) {
+        ["@Start"]=>
+        int(2036)
+        ["@End"]=>
+        int(2138)
+        ["#"]=>
+        string(0) ""
+      }
+      [79]=>
+      array(3) {
+        ["@Start"]=>
+        int(2138)
+        ["@End"]=>
+        int(2140)
+        ["#"]=>
+        string(0) ""
+      }
+      [80]=>
+      array(4) {
+        ["@Start"]=>
+        int(2140)
+        ["@End"]=>
+        int(2102)
+        ["@EndOffsetY"]=>
+        int(1)
+        ["#"]=>
+        string(0) ""
+      }
+      [81]=>
+      array(3) {
+        ["@Start"]=>
+        int(2336)
+        ["@End"]=>
+        int(2536)
+        ["#"]=>
+        string(0) ""
+      }
+      [82]=>
+      array(3) {
+        ["@Start"]=>
+        int(2536)
+        ["@End"]=>
+        int(2537)
+        ["#"]=>
+        string(0) ""
+      }
+      [83]=>
+      array(3) {
+        ["@Start"]=>
+        int(2537)
+        ["@End"]=>
+        int(2637)
+        ["#"]=>
+        string(0) ""
+      }
+      [84]=>
+      array(3) {
+        ["@Start"]=>
+        int(2637)
+        ["@End"]=>
+        int(2739)
+        ["#"]=>
+        string(0) ""
+      }
+      [85]=>
+      array(3) {
+        ["@Start"]=>
+        int(2739)
+        ["@End"]=>
+        int(2839)
+        ["#"]=>
+        string(0) ""
+      }
+      [86]=>
+      array(3) {
+        ["@Start"]=>
+        int(2839)
+        ["@End"]=>
+        int(2940)
+        ["#"]=>
+        string(0) ""
+      }
+      [87]=>
+      array(3) {
+        ["@Start"]=>
+        int(2839)
+        ["@End"]=>
+        int(3139)
+        ["#"]=>
+        string(0) ""
+      }
+      [88]=>
+      array(3) {
+        ["@Start"]=>
+        int(2637)
+        ["@End"]=>
+        int(2936)
+        ["#"]=>
+        string(0) ""
+      }
+      [89]=>
+      array(3) {
+        ["@Start"]=>
+        int(2936)
+        ["@End"]=>
+        int(3235)
+        ["#"]=>
+        string(0) ""
+      }
+      [90]=>
+      array(3) {
+        ["@Start"]=>
+        int(3235)
+        ["@End"]=>
+        int(3032)
+        ["#"]=>
+        string(0) ""
+      }
+      [91]=>
+      array(3) {
+        ["@Start"]=>
+        int(3032)
+        ["@End"]=>
+        int(2733)
+        ["#"]=>
+        string(0) ""
+      }
+      [92]=>
+      array(3) {
+        ["@Start"]=>
+        int(2733)
+        ["@End"]=>
+        int(2536)
+        ["#"]=>
+        string(0) ""
+      }
+      [93]=>
+      array(3) {
+        ["@Start"]=>
+        int(2733)
+        ["@End"]=>
+        int(2334)
+        ["#"]=>
+        string(0) ""
+      }
+      [94]=>
+      array(3) {
+        ["@Start"]=>
+        int(3032)
+        ["@End"]=>
+        int(3030)
+        ["#"]=>
+        string(0) ""
+      }
+      [95]=>
+      array(3) {
+        ["@Start"]=>
+        int(3030)
+        ["@End"]=>
+        int(3029)
+        ["#"]=>
+        string(0) ""
+      }
+      [96]=>
+      array(3) {
+        ["@Start"]=>
+        int(3029)
+        ["@End"]=>
+        int(2927)
+        ["#"]=>
+        string(0) ""
+      }
+      [97]=>
+      array(3) {
+        ["@Start"]=>
+        int(2927)
+        ["@End"]=>
+        int(2828)
+        ["#"]=>
+        string(0) ""
+      }
+      [98]=>
+      array(3) {
+        ["@Start"]=>
+        int(2927)
+        ["@End"]=>
+        int(3025)
+        ["#"]=>
+        string(0) ""
+      }
+      [99]=>
+      array(3) {
+        ["@Start"]=>
+        int(3025)
+        ["@End"]=>
+        int(2726)
+        ["#"]=>
+        string(0) ""
+      }
+      [100]=>
+      array(3) {
+        ["@Start"]=>
+        int(2726)
+        ["@End"]=>
+        int(2324)
+        ["#"]=>
+        string(0) ""
+      }
+      [101]=>
+      array(3) {
+        ["@Start"]=>
+        int(2323)
+        ["@End"]=>
+        int(2324)
+        ["#"]=>
+        string(0) ""
+      }
+      [102]=>
+      array(3) {
+        ["@Start"]=>
+        int(3025)
+        ["@End"]=>
+        int(3124)
+        ["#"]=>
+        string(0) ""
+      }
+      [103]=>
+      array(4) {
+        ["@Start"]=>
+        int(3124)
+        ["@End"]=>
+        string(4) "0124"
+        ["@EndOffsetX"]=>
+        int(1)
+        ["#"]=>
+        string(0) ""
+      }
+      [104]=>
+      array(3) {
+        ["@Start"]=>
+        int(3003)
+        ["@End"]=>
+        int(3103)
+        ["#"]=>
+        string(0) ""
+      }
+      [105]=>
+      array(3) {
+        ["@Start"]=>
+        int(3103)
+        ["@End"]=>
+        int(3202)
+        ["#"]=>
+        string(0) ""
+      }
+      [106]=>
+      array(4) {
+        ["@Start"]=>
+        int(3202)
+        ["@End"]=>
+        string(4) "0201"
+        ["@EndOffsetX"]=>
+        int(1)
+        ["#"]=>
+        string(0) ""
+      }
+      [107]=>
+      array(5) {
+        ["@Start"]=>
+        int(3201)
+        ["@End"]=>
+        string(4) "0103"
+        ["@StartOffsetX"]=>
+        int(-1)
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [108]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0103"
+        ["@End"]=>
+        string(4) "0304"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [109]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0304"
+        ["@End"]=>
+        string(4) "0307"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [110]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0307"
+        ["@End"]=>
+        string(4) "0608"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [111]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0608"
+        ["@End"]=>
+        string(4) "0610"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [112]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0610"
+        ["@End"]=>
+        string(4) "0712"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [113]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0712"
+        ["@End"]=>
+        string(4) "0614"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [114]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0614"
+        ["@End"]=>
+        string(4) "0412"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [115]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0303"
+        ["@End"]=>
+        string(4) "0304"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [116]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0304"
+        ["@End"]=>
+        string(4) "0705"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [117]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0705"
+        ["@End"]=>
+        string(4) "0904"
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [118]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0904"
+        ["@End"]=>
+        int(1103)
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [119]=>
+      array(4) {
+        ["@Start"]=>
+        int(1103)
+        ["@End"]=>
+        int(1402)
+        ["@Allegiance"]=>
+        string(4) "ZhCo"
+        ["#"]=>
+        string(0) ""
+      }
+      [120]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0421"
+        ["@End"]=>
+        string(4) "0223"
+        ["@Allegiance"]=>
+        string(4) "DaCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [121]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0223"
+        ["@End"]=>
+        string(4) "0325"
+        ["@Allegiance"]=>
+        string(4) "DaCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [122]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0325"
+        ["@End"]=>
+        string(4) "0426"
+        ["@Allegiance"]=>
+        string(4) "DaCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [123]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0426"
+        ["@End"]=>
+        string(4) "0527"
+        ["@Allegiance"]=>
+        string(4) "DaCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [124]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0527"
+        ["@End"]=>
+        string(4) "0727"
+        ["@Allegiance"]=>
+        string(4) "DaCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [125]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0325"
+        ["@End"]=>
+        string(4) "0624"
+        ["@Allegiance"]=>
+        string(4) "DaCf"
+        ["#"]=>
+        string(0) ""
+      }
+      [126]=>
+      array(4) {
+        ["@Start"]=>
+        string(4) "0624"
+        ["@End"]=>
+        string(4) "0724"
+        ["@Allegiance"]=>
+        string(4) "DaCf"
+        ["#"]=>
+        string(0) ""
+      }
+    }
+  }
+}
