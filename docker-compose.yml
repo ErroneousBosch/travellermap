@@ -8,8 +8,11 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       VIRTUAL_HOST: travellermap.localhost
+      XDEBUG_CONFIG: client_host=host.docker.internal
     networks:
       - docker_default
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
 
 networks:
   docker_default:
