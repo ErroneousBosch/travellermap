@@ -26,7 +26,9 @@
         "symfony/runtime": "^7",
         "symfony/serializer": "^7",
         "symfony/twig-bundle": "^7",
+        "symfony/ux-twig-component": "^2.13",
         "symfony/yaml": "^7",
+        "symfonycasts/sass-bundle": "*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
@@ -78,5 +80,9 @@
             "require": "^7",
             "docker": true
         }
+    },
+    "require-dev": {
+        "symfony/stopwatch": "^7",
+        "symfony/web-profiler-bundle": "^7"
     }
 }

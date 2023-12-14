@@ -30,10 +30,10 @@ class Remark
     #[ORM\ManyToMany(targetEntity: World::class, mappedBy: 'remarks', cascade: ['persist'])]
     private Collection $worlds;
 
-    #[ORM\ManyToOne(inversedBy: 'remarks')]
+    #[ORM\ManyToOne(inversedBy: 'remarks', cascade: ['persist'])]
     private ?Sophont $sophonts = null;
 
-    #[ORM\ManyToOne(inversedBy: 'remarks')]
+    #[ORM\ManyToOne(inversedBy: 'remarks', cascade: ['persist'])]
     private ?Allegiance $allegiance = null;
 
     #[ORM\ManyToOne(inversedBy: 'controls')]

@@ -27,7 +27,7 @@ use Symfony\Component\Serializer\Serializer;
 
 #[AsCommand(
     name: 'travellermap:populate',
-    description: 'Add a short description for your command',
+    description: 'populate Travellermap data',
 )]
 class TravellermapPopulateCommand extends Command
 {
@@ -78,7 +78,8 @@ class TravellermapPopulateCommand extends Command
             $this->popSector($sector);
         } elseif ($sector = $input->getOption('worlds')) {
             $this->io->writeln('Populating worlds in sector ' . $sector);
-            // var_dump($this->travellerMapApi->getWorlds($sector));
+            $this->sector = $this->entityManager->getRepository(Sector::class)->findOneBy(['abbreviation' => $sector]);
+            $this->popWorlds();
         } elseif ($sector = $input->getOption('testapi')) {
             $this->io->writeln('Testing API');
             var_dump($this->travellerMapApi->getUniverse());
@@ -129,6 +130,7 @@ class TravellermapPopulateCommand extends Command
         $this->entityManager->flush();
         $this->entityManager->clear();
         $progressBar->finish();
+        $this->io->writeln('');
         
     }
     private function popRemarks(){
@@ -158,6 +160,7 @@ class TravellermapPopulateCommand extends Command
         $this->entityManager->flush();
         $this->entityManager->clear();
         $progressBar->finish();
+        $this->io->writeln('');
     }
 
     private function popAllegiances(){
@@ -186,6 +189,7 @@ class TravellermapPopulateCommand extends Command
         $this->entityManager->flush();
         $this->entityManager->clear();
         $progressBar->finish();
+        $this->io->writeln('');
     }
 
     private function popSophonts(){
@@ -214,6 +218,7 @@ class TravellermapPopulateCommand extends Command
         $this->entityManager->flush();
         $this->entityManager->clear();
         $progressBar->finish();
+        $this->io->writeln('');
     }
 
     private function popSectors() {
@@ -226,6 +231,7 @@ class TravellermapPopulateCommand extends Command
             $this->popSector(($sector['Abbreviation']?? $sector['Names'][0]['Text']));
         }
         $progressBar->finish();
+        $this->io->writeln('');
     }
 
     private function popSector ($sector, $getWorlds = false){
@@ -328,8 +334,9 @@ class TravellermapPopulateCommand extends Command
 
 private function popWorld($data){
         // $this->io->writeln('Populating world ' . $data['Name']);
+        // @ini_set('memory_limit','1G');
         $data['uniqid'] = $this->sector->getUniqid() . ':' . $data['Hex'];
-        $data['sector'] = $this->sector;
+        unset($data['Sector']);
         $data['subsector'] = $data['SS'];
         unset($data['SS']);
         //process {Ix}	(Ex)	[Cx]
@@ -341,15 +348,29 @@ private function popWorld($data){
         unset($data['Remarks']);
         $data['bodies'] = $data['W'] ?? 0;
         unset($data['W']);
+        //handle allegiances
         $world = $this->entityManager->getRepository(World::class)->findOneBy(['uniqid' => $data['uniqid']]) ?? new World();
+        $world->setSector($this->sector);
+        if (!empty($data['Allegiance'])){
+            $allegiance = $this->entityManager->getRepository(Allegiance::class)->findOneBy(['code' => $data['Allegiance']]);
+            if (!empty($allegiance)){
+                $world->setAllegiance( $allegiance);
+                unset($data['Allegiance']);
+            } else {
+                throw new \Exception('Allegiance ' . $data['Allegiance'] . ' not found');
+            }
+        }
         $world = $this->serializer->deserialize(
             $this->serializer->serialize($data, 'json'),
             World::class,
             'json',
-            [AbstractNormalizer::OBJECT_TO_POPULATE => $world]
+            [AbstractNormalizer::OBJECT_TO_POPULATE => $world, ]
         );
-
+        
         foreach($remarks as $remark){
+            if (empty($remark)){
+                continue;
+            }
             $remarkent = $this->entityManager->getRepository(Remark::class)->findOneBy(['code' => $remark]) ?? new Remark();
             if (empty($remarkent->getId())){
                 $remarkent->setCode($remark)
@@ -363,8 +384,14 @@ private function popWorld($data){
                         'world' => $world->getUniqid(),
                         'remark' => $remark
                     ];
+                    continue;
                 } elseif (str_contains($remark, 'Di(')){
-                    $sophont = $this->entityManager->getRepository(Sophont::class)->findOneBy(['name' => substr($remark, 3, strlen($remark) - 4)]);
+                    $sophontName = substr($remark, 3, strlen($remark) - 4);
+                    $sophont = $this->entityManager->getRepository(Sophont::class)->findOneBy(['name' => $sophontName]) ?? new Sophont();
+                    if (empty($sophont->getId())){
+                        $sophont->setName($sophontName);
+                        $sophont->setCode(substr($sophontName, 0, 4));
+                    }
                     $remarkent->setSophonts($sophont);
                     $descr = "Homeworld of  " . $sophont->getName() . ' (extinct)';
                 } elseif (str_contains($remark, '(') || str_contains($remark, '[')){
@@ -373,18 +400,24 @@ private function popWorld($data){
                         $pops = substr($remark, -1, 1) . '0% of population';
                         $remark = substr($remark, 0, strlen($remark) - 1);
                     } 
-                    $sophont = $this->entityManager->getRepository(Sophont::class)->findOneBy(['name' => trim($remark, '()[] ')]);
+                    $sophontName = trim($remark, '()[] ');
+                    $sophont = $this->entityManager->getRepository(Sophont::class)->findOneBy(['name' => $sophontName]) ?? new Sophont();
+                    if (empty($sophont->getId())){
+                        $sophont->setName($sophontName);
+                        $sophont->setCode(substr($sophontName, 0, 4));
+                    }
                     $remarkent->setSophonts($sophont);
                     $descr = "Homeworld of  " . $sophont->getName() . ' (' . $pops . ')';
                 } elseif (str_contains($remark, '{')){
                     $descr = trim($remark, '{}');
-                } elseif (strlen($remark = 5 && (is_numeric(substr($remark,-1,1)) || substr($remark,-1,1) == 'W'))){
+                } elseif (strlen($remark) == 5 && (is_numeric(substr($remark,-1,1)) || substr($remark,-1,1) == 'W')){
+                    
                     $pops = '100% of population';
                     if (is_numeric(substr($remark, -1, 1))){
                         $pops = substr($remark, -1, 1) . '0% of population';
-                        $remark = substr($remark, 0, strlen($remark) - 1);
                     }
-                    $sophont = $this->entityManager->getRepository(Sophont::class)->findOneBy(['code' => substr($remark, 0, strlen($remark) - 1)]);
+                    $remark = substr($remark, 0, strlen($remark) - 1);
+                    $sophont = $this->entityManager->getRepository(Sophont::class)->findOneBy(['code' => $remark]);
                     $remarkent->setSophonts($sophont);
                     $descr = $sophont->getName() . ' population (' . $pops . ')';
                 }
@@ -417,7 +450,7 @@ private function popWorld($data){
             $world = $this->entityManager->getRepository(World::class)->findOneBy(['uniqid' => $item['world']]);
             $remark = $this->entityManager->getRepository(Remark::class)->findOneBy(['code' => $item['remark']]) ?? new Remark();
             if (empty($remark->getId())){
-                if(str_contains($remark, '-')){
+                if(str_contains($item['remark'], '-')){
                     $data = explode('-', $remark);
                     $item['remark'] = $data[1];
                     $sector = $this->entityManager->getRepository(Sector::class)->findOneBy(['abbreviation' => $data[0]]);
@@ -434,5 +467,6 @@ private function popWorld($data){
         }
         $this->scratchpad = [];
         $progressBar->finish();
+        $this->io->writeln('');
     }
 }

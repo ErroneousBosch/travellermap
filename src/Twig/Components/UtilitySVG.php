@@ -1,11 +1,16 @@
 <?php
 
-namespace  App\Service;
+namespace App\Twig\Components;
 
-class SvgHexGenerator {
+use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
+
+
+#[AsTwigComponent]
+final class UtilitySVG
+{
   public int $baseLength;
-  public int $hexHeight;
-  public int $hexSide;
+  private int $hexHeight;
+  private int $hexSide;
 
 
   public function __construct(int $baseLength = 100) {
@@ -41,6 +46,4 @@ class SvgHexGenerator {
     PHP_EOL;
     return $hexagon;
   }
-
-
 }

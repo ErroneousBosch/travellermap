@@ -18,7 +18,7 @@ class World
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'worlds')]
+    #[ORM\ManyToOne(inversedBy: 'worlds', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Sector $sector = null;
 
@@ -127,8 +127,11 @@ class World
     #[ORM\Column(length: 1, nullable: true)]
     private ?string $subsector = null;
 
-    #[ORM\ManyToOne(inversedBy: 'worlds')]
+    #[ORM\ManyToOne(inversedBy: 'worlds', cascade: ['persist'])]
     private ?Allegiance $allegiance = null;
+
+    #[ORM\Column(length: 4, nullable: true)]
+    private ?string $hex = null;
 
     public function __construct()
     {
@@ -641,6 +644,18 @@ class World
     public function setAllegiance(?Allegiance $allegiance): static
     {
         $this->allegiance = $allegiance;
+
+        return $this;
+    }
+
+    public function getHex(): ?string
+    {
+        return $this->hex;
+    }
+
+    public function setHex(?string $hex): static
+    {
+        $this->hex = $hex;
 
         return $this;
     }
