@@ -24,6 +24,13 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Contracts\Cache\TagAwareCacheInterface;
+use Symfony\Contracts\Cache\ItemInterface;
+
+
+/* @todo: rewrite this whole thing to cache data and process more piecemeal.
+   @todo: switch sector api lookups to coordinates rather than abbreviations. 
+ */
 
 #[AsCommand(
     name: 'travellermap:populate',
@@ -38,6 +45,7 @@ class TravellermapPopulateCommand extends Command
     public function __construct(
         private TravellerMapApi $travellerMapApi,
         private EntityManagerInterface $entityManager,
+        private TagAwareCacheInterface $cache
     ){
         parent::__construct();
         $defaultContext = [
@@ -78,11 +86,14 @@ class TravellermapPopulateCommand extends Command
             $this->popSector($sector);
         } elseif ($sector = $input->getOption('worlds')) {
             $this->io->writeln('Populating worlds in sector ' . $sector);
-            $this->sector = $this->entityManager->getRepository(Sector::class)->findOneBy(['abbreviation' => $sector]);
+            $this->sector = $this->entityManager->getRepository(Sector::class)->findOneBy(['abbreviation' => ucwords($sector)]);
             $this->popWorlds();
         } elseif ($sector = $input->getOption('testapi')) {
             $this->io->writeln('Testing API');
-            var_dump($this->travellerMapApi->getUniverse());
+            // var_dump($this->travellerMapApi->getUniverse());
+            $this->travellerMapApi->getWorlds('spin');
+            var_dump($this->travellerMapApi->updatedCaches);
+
         }
         // else {
         //     $this->io->writeln('Listing all sectors');
@@ -224,16 +235,19 @@ class TravellermapPopulateCommand extends Command
     private function popSectors() {
         $this->io->writeln('Pulling Universe and Populating Sectors');
         $dataset = $this->travellerMapApi->getUniverse()['Sectors'];
+        //@todo: cache response to separate entries, process through. 
         $progressBar = new ProgressBar($this->io, count($dataset));
         $progressBar->start();
         foreach ($dataset as $sector) {
             $progressBar->advance();
+            //@todo: pass coords
             $this->popSector(($sector['Abbreviation']?? $sector['Names'][0]['Text']));
         }
         $progressBar->finish();
         $this->io->writeln('');
     }
 
+    //switch to coords
     private function popSector ($sector, $getWorlds = false){
         // $this->io->writeln('Populating metadata for sector ' . $sector);
         $sectordata = $this->travellerMapApi->getSector($sector);
@@ -433,12 +447,20 @@ private function popWorld($data){
 
     private function popWorlds() {
         $this->io->writeln('Pulling Worlds for sector ' . $this->sector->getName());
-        $dataset = $this->travellerMapApi->getWorlds($this->sector->getAbbreviation());
+        $this->travellerMapApi->getWorlds($this->sector->getAbbreviation());
+        $dataset = $this->travellerMapApi->updatedCaches['world'];
         $progressBar = new ProgressBar($this->io, count($dataset));
         $progressBar->start();
-        foreach ($dataset as $world) {
+        foreach ($dataset as $k => $t) {
             $progressBar->advance();
+            if ($world = $this->cache->get($t, function (ItemInterface $item) {
+                $item->expiresAfter(1);
+                return NULL;
+            })){
+                
             $this->popWorld($world);
+            unset($dataset[$k]);
+            }
         }
         $progressBar->finish();
         $this->io->writeln('Populating remarks for sector ' . $this->sector->getName());
@@ -450,11 +472,13 @@ private function popWorld($data){
             $world = $this->entityManager->getRepository(World::class)->findOneBy(['uniqid' => $item['world']]);
             $remark = $this->entityManager->getRepository(Remark::class)->findOneBy(['code' => $item['remark']]) ?? new Remark();
             if (empty($remark->getId())){
+                var_dump($item['remark']);
                 if(str_contains($item['remark'], '-')){
                     $data = explode('-', $remark);
                     $item['remark'] = $data[1];
                     $sector = $this->entityManager->getRepository(Sector::class)->findOneBy(['abbreviation' => $data[0]]);
                 }
+                var_dump($this->sector->getID());
                 $owner = $this->entityManager->getRepository(World::class)->findOneBy(['sector' => ($sector ?? $this->sector), 'hex' => $item['remark']]);
                 $remark->setCode($item['remark'])
                 ->setUniqid($item['remark'])
