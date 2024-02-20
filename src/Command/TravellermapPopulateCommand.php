@@ -42,6 +42,7 @@ class TravellermapPopulateCommand extends Command
     private SymfonyStyle $io;
     private Sector $sector;
     private array $scratchpad = [];
+
     public function __construct(
         private TravellerMapApi $travellerMapApi,
         private EntityManagerInterface $entityManager,
